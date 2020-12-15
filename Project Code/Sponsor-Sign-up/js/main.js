@@ -43,6 +43,11 @@
             }
         }
 
+        if($(input[4]).val()!=$(input[5]).val()){
+          check=false;
+          $(input[5]).parent().removeClass('true-validate');
+          showValidate(input[5]);
+        }
 
         return check;
     });
@@ -83,7 +88,6 @@
         $(thisAlert).removeClass('alert-validate');
 
     }
-
 
 
 })(jQuery);
