@@ -6,7 +6,7 @@ https://templatemo.com/tm-537-art-factory
 
 */
 
-/* 
+/*
 ---------------------------------------------
 Table of contents
 ---------------------------------------------
@@ -23,19 +23,19 @@ Table of contents
 11. footer
 12. preloader
 
---------------------------------------------- 
+---------------------------------------------
 */
 
-/* 
+/*
 ---------------------------------------------
 font & reset css
---------------------------------------------- 
+---------------------------------------------
 */
 @import url("https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900");
-/* 
+/*
 ---------------------------------------------
 reset
---------------------------------------------- 
+---------------------------------------------
 */
 html,
 body,
@@ -178,10 +178,10 @@ p {
   color: #4a4a4a;
 }
 
-/* 
+/*
 ---------------------------------------------
 global styles
---------------------------------------------- 
+---------------------------------------------
 */
 html,
 body {
@@ -238,7 +238,7 @@ a.main-button {
   font-size: 13px;
   border-radius: 20px;
   padding: 12px 20px;
-  background-color: #00b4c6;
+  background-color: #f65859;
   text-transform: uppercase;
   color: #fff;
   letter-spacing: 0.25px;
@@ -287,10 +287,10 @@ button.main-button:hover {
   text-align: center;
 }
 
-/* 
+/*
 ---------------------------------------------
 header
---------------------------------------------- 
+---------------------------------------------
 */
 
 .background-header {
@@ -710,10 +710,10 @@ header
   }
 }
 
-/* 
+/*
 ---------------------------------------------
 welcome
---------------------------------------------- 
+---------------------------------------------
 */
 #welcome {
   overflow: hidden;
@@ -725,7 +725,7 @@ welcome
   background-repeat: no-repeat;
 /*
 TRY IT ... with or without CENTER CENTER
-  background-position: center center; 
+  background-position: center center;
 */
   background-size: cover;
   width: 100%;
@@ -901,10 +901,10 @@ about
   margin-bottom: 20px;
 }
 
-/* 
+/*
 ---------------------------------------------
 services
---------------------------------------------- 
+---------------------------------------------
 */
 /*
 #services {
@@ -1178,10 +1178,10 @@ accordions
   padding-top: 0;
 }
 
-/* 
+/*
 ---------------------------------------------
 contact
---------------------------------------------- 
+---------------------------------------------
 */
 
 #contact-us {
@@ -1195,7 +1195,7 @@ contact
   filter: brightness(95%);
 /*
 TRY IT ... with or without CENTER CENTER
-  background-position: center center; 
+  background-position: center center;
 */
   background-size: cover;
   width: 100%;
@@ -1322,10 +1322,10 @@ TRY IT ... with or without CENTER CENTER
   color: #fff;
 }
 
-/* 
+/*
 ---------------------------------------------
 footer
---------------------------------------------- 
+---------------------------------------------
 */
 footer {
   background-color: #fff;
@@ -1382,10 +1382,10 @@ footer .copyright {
   }
 }
 
-/* 
+/*
 ---------------------------------------------
 preloader
---------------------------------------------- 
+---------------------------------------------
 */
 #preloader {
   overflow: hidden;
