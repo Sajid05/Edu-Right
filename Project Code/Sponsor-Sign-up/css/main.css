@@ -215,9 +215,9 @@ iframe {
   position: absolute;
   z-index: -1;
   width: 100%;
-  height: 80%;
+  height: 100%;
   top: 0;
-  left: 0;
+  left: 2;
 /*  background: #e8519e;
   background: -webkit-linear-gradient(bottom, #e8519e, #c77ff2);
   background: -o-linear-gradient(bottom, #e8519e, #c77ff2);
