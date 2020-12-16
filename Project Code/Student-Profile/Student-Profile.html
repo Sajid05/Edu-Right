@@ -12,7 +12,7 @@
     margin-top:20px;
     color: #1a202c;
     text-align: left;
-    background-color: #e2e8f0;    
+    background-color: #e2e8f0;
 }
 .main-body {
     padding: 15px;
@@ -30,13 +30,14 @@
     background-color: #fff;
     background-clip: border-box;
     border: 0 solid rgba(0,0,0,.125);
-    border-radius: .25rem;
+    border-radius: 17px;
 }
 
 .card-body {
     flex: 1 1 auto;
     min-height: 1px;
-    padding: 1rem;
+    adding: 1rem;
+    border-radius: 17px;
 }
 
 .gutters-sm {
@@ -50,6 +51,7 @@
 }
 .mb-3, .my-3 {
     margin-bottom: 1rem!important;
+    border-radius: 17px;
 }
 
 .bg-gray-300 {
@@ -68,10 +70,16 @@
   border-color: #f55858;
 }
 
+.btn-outline-primary {
+  background-color: #f55858;
+  border-color: #f55858;
+  color: white;
+}
+
 .profile{
 
-  background-image: linear-gradient(to right top, #bdadeb, #a2b6f2, #86bdf3, #70c4ec, #66c8e0, #59cbd7, #56cec9, #5ecfb9, #62d0a5, #72d08c, #88cf71, #a2cb54);
- 
+  background-image: linear-gradient(to right top, #8c7eeb, #4594f5, #00a5ef, #00b0dd, #00b8c7, #00b6c5, #00b4c4, #00b2c2, #00a6d1, #3397d7, #6984d0, #926ebb);
+  
 }
 
     </style>
@@ -79,17 +87,17 @@
 <body>
 <div class="container">
     <div class="main-body">
-    
+
           <!-- Breadcrumb -->
           <nav aria-label="breadcrumb" class="main-breadcrumb">
             <ol class="breadcrumb">
-              <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-              <li class="breadcrumb-item"><a href="javascript:void(0)">Student</a></li>
+              <li class="breadcrumb-item"><a href="../Home-Page.html">Home</a></li>
+              <li class="breadcrumb-item"><a href="../Home-Page.html">Student</a></li>
               <li class="breadcrumb-item active" aria-current="page">Student Profile</li>
             </ol>
           </nav>
           <!-- /Breadcrumb -->
-    
+
           <div class="row gutters-sm">
             <div class="col-md-4 mb-3">
               <div class="card">
@@ -97,10 +105,10 @@
                   <div class="d-flex flex-column align-items-center text-center">
                     <br> <br><br> <br><br>
                     <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="150">
-                    <div class="mt-3"> 
+                    <div class="mt-3">
                       <h4>Rashed</h4>
-                      <p class="text-secondary mb-1">Student of Class 5</p>
-                      <p class="text-muted font-size-sm">Feni Sadar</p> <br> <br>
+                      <p class="text-secondary mb-1"><text style="color:black;">Student of Class 5</text></p>
+                      <p class="text-muted font-size-sm"><text style="color:black;">Feni Sadar</text></p><br><br>
                       <button class="btn btn-primary">Update Profile</button> <br> <br>
                       <button class="btn btn-outline-primary">Log out</button> <br> <br>
                     </div>
@@ -202,7 +210,7 @@
                       </div>
                     </div>
                   <hr>
-                  
+
                 </div>
               </div>
             </div>
@@ -212,7 +220,7 @@
 <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
 <script src="http://netdna.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 <script type="text/javascript">
-	
+
 </script>
 </body>
 </html>
