@@ -1,20 +1,20 @@
 <?php
 
-	$db = new mysqli("localhost","root","","edu_right");
+		$db = new mysqli("localhost","root","","edu_right");
 
-// Check connection
-if ($db -> connect_errno) {
-  echo "Failed to connect to MySQL: " . $db -> connect_error;
-  exit();
-}
-   //include("config.php");
-   session_start();
+		// Check connection
+		if ($db -> connect_errno) {
+  		echo "Failed to connect to MySQL: " . $db -> connect_error;
+  		exit();
+		}
+   	//include("config.php");
+   	session_start();
 
    if($_SERVER["REQUEST_METHOD"] == "POST") {
-      // username and password sent from form 
+      // username and password sent from form
 
       $myusername = mysqli_real_escape_string($db,$_POST['email']);
-      $mypassword = mysqli_real_escape_string($db,$_POST['pass']); 
+      $mypassword = mysqli_real_escape_string($db,$_POST['pass']);
 
       $sql = "SELECT Email FROM sponsor WHERE Email = '$myusername' and Password = '$mypassword'";
       $result = mysqli_query($db,$sql);
@@ -33,7 +33,7 @@ if ($db -> connect_errno) {
 
 
       }else {
-         
+
          echo 'Your Login Name or Password is invalid';
       }
    }
