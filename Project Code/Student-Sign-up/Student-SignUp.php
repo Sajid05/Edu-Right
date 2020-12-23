@@ -86,12 +86,12 @@
 					<div class="container-login100-form-btn">
 						<div class="wrap-login100-form-btn">
 							<div class="login100-form-bgbtn"></div>
-							<button class="login100-form-btn" formaction="../Student-Profile/Student-Profile.html">
+							<button class="login100-form-btn" formaction="../Student-Profile/Student-Profile.php">
 								Sign Up
 							</button>
 						</div>
 
-						<a href="../Student-Login/Student-login.html" class="dis-block txt3 hov1 p-r-30 p-t-10 p-b-10 p-l-30">
+						<a href="../Student-Login/Student-login.php" class="dis-block txt3 hov1 p-r-30 p-t-10 p-b-10 p-l-30">
 							Log in
 							<i class="fa fa-long-arrow-right m-l-5"></i>
 						</a>

@@ -88,13 +88,13 @@
 						<div class="wrap-login100-form-btn">
 							<div class="login100-form-bgbtn"></div>
 
-							<button class="login100-form-btn" formaction="../Sponsor-Profile/Sponsor-Profile.html">
+							<button class="login100-form-btn" formaction="../Sponsor-Profile/Sponsor-Profile.php">
 									Sign Up
 							</button>
 
 						</div>
 
-						<a href="../Sponsor-Login/Sponsor-login.html" class="dis-block txt3 hov1 p-r-30 p-t-10 p-b-10 p-l-30">
+						<a href="../Sponsor-Login/Sponsor-login.php" class="dis-block txt3 hov1 p-r-30 p-t-10 p-b-10 p-l-30">
 							Log in
 							<i class="fa fa-long-arrow-right m-l-5"></i>
 						</a>

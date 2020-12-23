@@ -646,9 +646,9 @@ input[type="submit"]:hover{
 <div class="container">
         <nav aria-label="breadcrumb" class="main-breadcrumb">
             <ol class="breadcrumb">
-              <li class="breadcrumb-item"><a href="../Home-Page.html">Home</a></li>
-              <li class="breadcrumb-item"><a href="../Home-Page.html">Scholarship</a></li>
-              <li class="breadcrumb-item"><a href="../Home-Page.html">Student Profile</a></li>
+              <li class="breadcrumb-item"><a href="../Home-Page.php">Home</a></li>
+              <li class="breadcrumb-item"><a href="../Home-Page.php">Scholarship</a></li>
+              <li class="breadcrumb-item"><a href="../Home-Page.php">Student Profile</a></li>
               <li class="breadcrumb-item active" aria-current="page">Update Profile</li>
             </ol>
           </nav>

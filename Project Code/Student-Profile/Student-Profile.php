@@ -90,8 +90,8 @@
           <!-- Breadcrumb -->
           <nav aria-label="breadcrumb" class="main-breadcrumb">
             <ol class="breadcrumb">
-              <li class="breadcrumb-item"><a href="../Home-Page.html">Home</a></li>
-              <li class="breadcrumb-item"><a href="../Home-Page.html">Scholarship</a></li>
+              <li class="breadcrumb-item"><a href="../Home-Page.php">Home</a></li>
+              <li class="breadcrumb-item"><a href="../Home-Page.php">Scholarship</a></li>
               <li class="breadcrumb-item active" aria-current="page">Student Profile</li>
             </ol>
           </nav>
@@ -108,7 +108,7 @@
                       <h4>Rashed</h4>
                       <p class="text-secondary mb-1"><text style="color:black;">Student of Class 5</text></p>
                       <p class="text-muted font-size-sm"><text style="color:black;">Feni Sadar</text></p><br><br>
-                      <a href="../Update-Student-Profile/Update-Student-Profile.html"<button class="btn btn-primary">Update Profile</button></a> <br> <br>
+                      <a href="../Update-Student-Profile/Update-Student-Profile.php"<button class="btn btn-primary">Update Profile</button></a> <br> <br>
                       <button class="btn btn-primary">View Sponsor's Profile</button> <br> <br>
                       <button class="btn btn-outline-primary">Log out</button> <br> <br>
                     </div>

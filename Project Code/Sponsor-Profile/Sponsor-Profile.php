@@ -89,8 +89,8 @@
           <!-- Breadcrumb -->
           <nav aria-label="breadcrumb" class="main-breadcrumb">
             <ol class="breadcrumb">
-              <li class="breadcrumb-item"><a href="../Home-Page.html">Home</a></li>
-              <li class="breadcrumb-item"><a href="../Home-Page.html">Sponsorship</a></li>
+              <li class="breadcrumb-item"><a href="../Home-Page.php">Home</a></li>
+              <li class="breadcrumb-item"><a href="../Home-Page.php">Sponsorship</a></li>
               <li class="breadcrumb-item active" aria-current="page">Sponsor Profile</li>
             </ol>
           </nav>
@@ -105,7 +105,7 @@
                     <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="150">
                     <div class="mt-3">
                       <h4>UserName</h4> <br><br>
-                      <a href="../Update-Sponsor-Profile/Update-Sponsor-Profile.html"><button class="btn btn-primary">Update Profile</button></a> <br> <br>
+                      <a href="../Update-Sponsor-Profile/Update-Sponsor-Profile.php"><button class="btn btn-primary">Update Profile</button></a> <br> <br>
                       <button class="btn btn-primary">Send Money</button> <br> <br>
                       <button class="btn btn-primary">Sponsored Students</button> <br> <br>
                       <button class="btn btn-outline-primary">Log out</button> <br> <br>
