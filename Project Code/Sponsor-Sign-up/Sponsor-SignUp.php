@@ -28,7 +28,7 @@
 
        if($count == 1) {
           // session_register("myusername");
-          $_SESSION['login_user'] = $myusername;
+          $_SESSION['login_user'] = $email;
 
           //header("location: ../Sponsor-Profile/Sponsor-Profile.php");
  					echo "Email is taken";
@@ -41,7 +41,7 @@
 			  			  VALUES('$email','$myusername','$fullname', '$mobileno', '$mypassword')";
 
 			  	mysqli_query($db, $query);
-			  	$_SESSION['email'] = $email;
+			  	$_SESSION['login_user'] = $email;
 			  	$_SESSION['success'] = "You are now logged in";
 			  	header('location: ../Sponsor-Profile/Sponsor-Profile.php');
 

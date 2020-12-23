@@ -1,3 +1,38 @@
+<?php
+
+		$db = new mysqli("localhost","root","","edu_right");
+
+		if ($db -> connect_errno) {
+  		echo "Failed to connect to MySQL: " . $db -> connect_error;
+  		exit();
+		}
+  	session_start();
+
+    $email = $_SESSION['login_user'];
+
+
+
+
+    $sql = "SELECT * FROM sponsor WHERE Email = '$email'";
+    $result = mysqli_query($db,$sql);
+    $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
+
+    $fullname = $row['Full_Name'];
+    $myusername = $row["Username"];
+    $mobileno = $row["Mobile_No"];
+    $dob = $row["DOB"];
+    $address = $row["Address"];
+    $education = $row["Education"];
+    $profession = $row["Profession"];
+    $hobby = $row["Hobby"];
+    $profilepic = $row["Profile_Picture"];
+
+?>
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -102,7 +137,9 @@
                 <div class="card-body profile">
                   <div class="d-flex flex-column align-items-center text-center">
                     <br>
-                    <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="150">
+                      <?php
+                      echo '<img src="data:image/jpeg;base64,'.base64_encode( $profilepic ).'" alt="Admin" class="rounded-circle" height="150" width="150"/>';
+                      ?>
                     <div class="mt-3">
                       <h4>UserName</h4> <br><br>
                       <a href="../Update-Sponsor-Profile/Update-Sponsor-Profile.php"><button class="btn btn-primary">Update Profile</button></a> <br> <br>
@@ -125,7 +162,7 @@
                       <h6 class="mb-0">Full Name</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                      Sample Name
+                      <?php echo $fullname; ?>
                     </div>
                   </div>
                   <hr>
@@ -134,7 +171,7 @@
                       <h6 class="mb-0">Username</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                      Sample username
+                      <?php echo $myusername; ?>
                     </div>
                   </div>
                   <hr>
@@ -143,7 +180,7 @@
                       <h6 class="mb-0">Email</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                      Sample Email
+                      <?php echo $email; ?>
                     </div>
                   </div>
                   <hr>
@@ -152,7 +189,7 @@
                       <h6 class="mb-0">Mobile No</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                      Sample Mobile No
+                      <?php echo '0'.$mobileno; ?>
                     </div>
                   </div>
                   <hr>
@@ -161,7 +198,7 @@
                       <h6 class="mb-0">Date of Birth</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                      Sample DOB
+                      <?php echo $dob; ?>
                     </div>
                   </div>
                   <hr>
@@ -170,7 +207,7 @@
                       <h6 class="mb-0">Address</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                      Sample Address
+                      <?php echo $address; ?>
                     </div>
                   </div>
                   <hr>
@@ -179,7 +216,7 @@
                       <h6 class="mb-0">Education</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                      Sample Education
+                      <?php echo $education; ?>
                     </div>
                   </div>
                   <hr>
@@ -188,7 +225,7 @@
                       <h6 class="mb-0">Profession</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                      Sample Profession
+                      <?php echo $profession; ?>
                     </div>
                   </div>
                   <hr>
@@ -197,7 +234,7 @@
                       <h6 class="mb-0">Hobby</h6>
                     </div>
                       <div class="col-sm-9 text-secondary">
-                          Sample Hobby
+                          <?php echo $hobby; ?>
                       </div>
                     </div>
                   <hr>
