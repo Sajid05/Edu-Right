@@ -139,8 +139,10 @@ Edu-Right aims to lower this number by forming bridge between humanitarian peopl
 
                     <center><p>Scholarship per student: 1000 BDT/month</p></center> <br> <br>
 
-                    <center><a href="./Sponsor-Sign-Up/Sponsor-SignUp.html" class="main-button-slider">START SPONSORING NOW</a> <br> <br>
-                        <p> Already a Sponsor? Log in <a href="./Sponsor-Login/Sponsor-login.html" style="color: blue;"> Here </a></p>
+                    <center><a href="./Sponsor-Sign-Up/Sponsor-SignUp.php" class="main-button-slider">START SPONSORING NOW</a> <br> <br>
+                        <p> Already a Sponsor? Log in
+
+                           <a href="./Sponsor-Login/Sponsor-login.php" style="color: blue;"> Here </a></p>
                     </center>
 
                 </div>
@@ -169,8 +171,8 @@ Edu-Right aims to lower this number by forming bridge between humanitarian peopl
                     </div>
                     <center><h5>MAKE YOUR DREAM COME TRUE</h5></center> <br> <br> <br>
 
-                    <center><a href="./Student-Sign-Up/Student-SignUp.html" class="main-button-slider">APPLY FOR SCHOLARSHIP</a> <br> <br>
-                        <p> Already a Registered Student? Log in <a href="./Student-Login/Student-login.html" style="color: blue;"> Here </a></p>
+                    <center><a href="./Student-Sign-Up/Student-SignUp.php" class="main-button-slider">APPLY FOR SCHOLARSHIP</a> <br> <br>
+                        <p> Already a Registered Student? Log in <a href="./Student-Login/Student-login.php" style="color: blue;"> Here </a></p>
                     </center>
 
 
