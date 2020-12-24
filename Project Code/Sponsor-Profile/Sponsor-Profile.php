@@ -138,10 +138,26 @@
                   <div class="d-flex flex-column align-items-center text-center">
                     <br>
                       <?php
+
+
+                      if(!empty($profilepic)){
                       echo '<img src="data:image/jpeg;base64,'.base64_encode( $profilepic ).'" alt="Admin" class="rounded-circle" height="150" width="150"/>';
-                      ?>
+                    }
+
+                      else
+                      {
+                        echo '<img src = "Default-Avatar.png" alt = "" class="rounded-circle" height="150" width="150">';
+                      }
+
+
+
+                      ?> 
                     <div class="mt-3">
-                      <h4>UserName</h4> <br><br>
+                      <?php
+
+                         echo '<h4>'.$myusername.'</h4> <br><br>'; 
+
+                      ?>    
                       <a href="../Update-Sponsor-Profile/Update-Sponsor-Profile.php"><button class="btn btn-primary">Update Profile</button></a> <br> <br>
                       <button class="btn btn-primary">Send Money</button> <br> <br>
                       <button class="btn btn-primary">Sponsored Students</button> <br> <br>

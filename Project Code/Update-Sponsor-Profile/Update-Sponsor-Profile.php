@@ -725,7 +725,18 @@ input[type="submit"]:hover{
 
 
                                   <?php
-                                  echo '<img src="data:image/jpeg;base64,'.base64_encode( $profilepic ).'" alt="Admin"  height="150" width="150"/>';
+
+
+
+                                  if(!empty($profilepic))
+                                  {
+                                      echo '<img src="data:image/jpeg;base64,'.base64_encode( $profilepic ).'" alt="Admin" class="rounded-circle" height="150" width="150"/>';
+                                  }
+
+                                  else
+                                  {
+                                    echo '<img src = "Default-Avatar.png" alt = "" class="rounded-circle" height="150" width="150">';
+                                  }
                                   ?>
                                     <!--<img class="img-rounded img-responsive" src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="">-->
                                 </figure>
