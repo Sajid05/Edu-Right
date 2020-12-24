@@ -45,7 +45,7 @@
        //$profilepic = mysqli_real_escape($db,$_POST['profilepic']);
 
  		 	 //Update
-			 $query = "UPDATE sponsor SET Full_Name='$fullname', Mobile_No='$mobileno', DOB='$dob', Address='$address', Education='$education', Profession='$profession', Hobby='$hobby', Profile_Picture='$profilepic' WHERE Email='$email'";
+			 $query = "UPDATE sponsor SET Full_Name='$fullname', Mobile_No='$mobileno', DOB='$dob', Address='$address', Education='$education', Profession='$profession', Hobby='$hobby' WHERE Email='$email'";
 			 mysqli_query($db, $query);
 
 			 header('location: ../Sponsor-Profile/Sponsor-Profile.php');
