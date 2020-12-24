@@ -1,3 +1,69 @@
+<?php
+
+		$db = new mysqli("localhost","root","","edu_right");
+
+		if ($db -> connect_errno) {
+  		echo "Failed to connect to MySQL: " . $db -> connect_error;
+  		exit();
+		}
+  	session_start();
+
+		if($_SERVER["REQUEST_METHOD"] == "POST") {
+       // username and password sent from form
+
+ 		 	 $fullname = mysqli_real_escape_string($db,$_POST['name']);
+       		 $myusername = mysqli_real_escape_string($db,$_POST['username']);
+			 $email = mysqli_real_escape_string($db,$_POST['email']);
+			 $mobileno = mysqli_real_escape_string($db,$_POST['MobileNo']);
+      		 $mypassword = mysqli_real_escape_string($db,$_POST['pass']);
+      		 $eligibility = mysqli_real_escape_string($db,$_POST['eligibility']);
+
+       $sql = "SELECT Email FROM student WHERE Email = '$email'";
+       $sql2 = "SELECT Email FROM pre_student WHERE Email = '$email'";
+
+       $result = mysqli_query($db,$sql);
+       $result2 = mysqli_query($db,$sql2);
+       $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
+       $row2 = mysqli_fetch_array($result2,MYSQLI_ASSOC);
+       //$active = $row['active'];
+
+       $count = mysqli_num_rows($result);
+       $count2 = mysqli_num_rows($result2);
+
+       // If result matched $myusername and $mypassword, table row must be 1 row
+
+       if($count == 1 || $count2 == 1) {
+          // session_register("myusername");
+         // $_SESSION['login_user'] = $email;
+
+          //header("location: ../Sponsor-Profile/Sponsor-Profile.php");
+ 					echo "Email is taken";
+
+       }else {
+
+ 			 		//Registration
+
+			  	$query = "INSERT INTO pre_student (Email, Username, Full_Name, Mobile_No, Password, Eligibility)
+			  			  VALUES('$email','$myusername','$fullname', '$mobileno', '$mypassword', '$eligibility')";
+
+			  	mysqli_query($db, $query);
+			  	$_SESSION['login_user'] = $email;
+			  	$_SESSION['success'] = "You are now logged in";
+			  	
+
+			  	header("location:../Student-Post-Sign-up-Message/Student-Post-Sign-up-Message.php");
+
+			
+			  	
+
+       }
+    }
+
+?>
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -28,6 +94,13 @@
 	<link rel="stylesheet" type="text/css" href="css/util.css">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 <!--===============================================================================================-->
+
+
+
+	  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+	  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
 </head>
 <body style="background-color: #999999;">
 
@@ -36,7 +109,7 @@
 			<div class="login100-more" style="background-image: url('images/Student-SignUp.png');"></div>
 
 			<div class="wrap-login100 p-l-50 p-r-50 p-t-72 p-b-50">
-				<form class="login100-form validate-form">
+				<form class="login100-form validate-form"  action="" method="POST">
 				<!--	<span class="login100-form-title p-b-59">
 						Sign Up
 					</span> -->
@@ -81,15 +154,23 @@
 						<span class="focus-input100"></span>
 					</div>
 
+					<div class="wrap-input100 validate-input" data-validate = "Eligibility application is required">
+						<span class="label-input100">Why do you need this scholarship?</span>
+						<input class="input100" type="text" name="eligibility" >
+						<span class="focus-input100"></span>
+					</div>
+
+
 
 
 					<div class="container-login100-form-btn">
 						<div class="wrap-login100-form-btn">
 							<div class="login100-form-bgbtn"></div>
-							<button class="login100-form-btn" formaction="../Student-Profile/Student-Profile.php">
+							<button  class="login100-form-btn">
 								Sign Up
 							</button>
 						</div>
+
 
 						<a href="../Student-Login/Student-login.php" class="dis-block txt3 hov1 p-r-30 p-t-10 p-b-10 p-l-30">
 							Log in

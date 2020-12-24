@@ -12,7 +12,7 @@
        // username and password sent from form
 
  		 	 $fullname = mysqli_real_escape_string($db,$_POST['name']);
-       $myusername = mysqli_real_escape_string($db,$_POST['username']);
+       		$myusername = mysqli_real_escape_string($db,$_POST['username']);
 			 $email = mysqli_real_escape_string($db,$_POST['email']);
 			 $mobileno = mysqli_real_escape_string($db,$_POST['MobileNo']);
        $mypassword = mysqli_real_escape_string($db,$_POST['pass']);
@@ -28,7 +28,7 @@
 
        if($count == 1) {
           // session_register("myusername");
-          $_SESSION['login_user'] = $email;
+        //  $_SESSION['login_user'] = $email;
 
           //header("location: ../Sponsor-Profile/Sponsor-Profile.php");
  					echo "Email is taken";
