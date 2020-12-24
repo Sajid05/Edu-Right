@@ -1,3 +1,62 @@
+<?php
+
+		$db = new mysqli("localhost","root","","edu_right");
+
+		if ($db -> connect_errno) {
+  		echo "Failed to connect to MySQL: " . $db -> connect_error;
+  		exit();
+		}
+  	session_start();
+
+    $email = $_SESSION['login_user'];
+
+
+
+
+    $sql = "SELECT * FROM sponsor WHERE Email = '$email'";
+    $result = mysqli_query($db,$sql);
+    $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
+
+    $fullname = $row['Full_Name'];
+    $myusername = $row["Username"];
+    $mobileno = $row["Mobile_No"];
+    $dob = $row["DOB"];
+    $address = $row["Address"];
+    $education = $row["Education"];
+    $profession = $row["Profession"];
+    $hobby = $row["Hobby"];
+    $profilepic = $row["Profile_Picture"];
+
+
+
+    if($_SERVER["REQUEST_METHOD"] == "POST") {
+
+ 		 	 $fullname = mysqli_real_escape_string($db,$_POST['name']);
+			 $mobileno = mysqli_real_escape_string($db,$_POST['mobileno']);
+       $dob = mysqli_real_escape_string($db,$_POST['dob']);
+       $address = mysqli_real_escape_string($db,$_POST['address']);
+       $education = mysqli_real_escape_string($db,$_POST['education']);
+       $profession = mysqli_real_escape_string($db,$_POST['profession']);
+       $hobby = mysqli_real_escape_string($db,$_POST['hobby']);
+
+
+       //$profilepic = file_get_contents($_FILES['profilepic']['tmp_name']);
+       //$profilepic = mysql_real_escape_string($profilepic);
+       //$profilepic = mysqli_real_escape($db,$_POST['profilepic']);
+
+ 		 	 //Update
+			 $query = "UPDATE sponsor SET Full_Name='$fullname', Mobile_No='$mobileno', DOB='$dob', Address='$address', Education='$education', Profession='$profession', Hobby='$hobby', Profile_Picture='$profilepic' WHERE Email='$email'";
+			 mysqli_query($db, $query);
+
+			 header('location: ../Sponsor-Profile/Sponsor-Profile.php');
+
+      }
+
+?>
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -659,14 +718,19 @@ input[type="submit"]:hover{
 
                 <div class="content-panel">
                     <h2 class="title">Personal Info</h2><br>
-                    <form class="form-horizontal">
+                    <form class="form-horizontal" action="" method="POST" >
                         <fieldset class="fieldset">
                             <div class="form-group avatar">
                                 <figure class="figure col-md-2 col-sm-3 col-xs-12">
-                                    <img class="img-rounded img-responsive" src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="">
+
+
+                                  <?php
+                                  echo '<img src="data:image/jpeg;base64,'.base64_encode( $profilepic ).'" alt="Admin"  height="150" width="150"/>';
+                                  ?>
+                                    <!--<img class="img-rounded img-responsive" src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="">-->
                                 </figure>
                                 <div class="form-inline col-md-10 col-sm-9 col-xs-12">
-                                    <input type="file" class="file-uploader pull-left">
+                                    <input type="file" class="file-uploader pull-left" name="profilepic">
                                     <button type="submit" class="btn btn-sm btn-default-alt pull-left">Update Image</button>
                                 </div>
                             </div>
@@ -675,43 +739,43 @@ input[type="submit"]:hover{
                             <div class="form-group">
                                 <label class="col-md-2 col-sm-3 col-xs-12 control-label">Full Name</label>
                                 <div class="col-md-10 col-sm-9 col-xs-12">
-                                    <input type="text" class="form-control" value="Rebecca" style="height:40px;">
+                                    <input type="text" class="form-control" name="name" value="<?php echo $fullname;?>" style="height:40px;">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-md-2 col-sm-3 col-xs-12 control-label">Mobile No</label>
                                 <div class="col-md-10 col-sm-9 col-xs-12">
-                                    <input type="number" class="form-control" value="Sanders" style="height:40px;">
+                                    <input type="number" class="form-control" name="mobileno" value="<?php echo '0'.$mobileno;?>" style="height:40px;">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-md-2 col-sm-3 col-xs-12 control-label">Date of Birth</label>
                                 <div class="col-md-10 col-sm-9 col-xs-12">
-                                    <input type="date" class="form-control" value="Rebecca" style="height:40px;">
+                                    <input type="date" class="form-control" name="dob" value="<?php echo $dob;?>" style="height:40px;">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-md-2 col-sm-3 col-xs-12 control-label">Address</label>
                                 <div class="col-md-10 col-sm-9 col-xs-12">
-                                    <input type="text" class="form-control" value="Rebecca" style="height:40px;">
+                                    <input type="text" class="form-control" name="address" value="<?php echo $address;?>" style="height:40px;">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-md-2 col-sm-3 col-xs-12 control-label">Education</label>
                                 <div class="col-md-10 col-sm-9 col-xs-12">
-                                    <input type="text" class="form-control" value="Rebecca" style="height:40px;">
+                                    <input type="text" class="form-control"  name="education" value="<?php echo $education;?>" style="height:40px;">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-md-2 col-sm-3 col-xs-12 control-label">Profession</label>
                                 <div class="col-md-10 col-sm-9 col-xs-12">
-                                    <input type="text" class="form-control" value="Rebecca" style="height:40px;">
+                                    <input type="text" class="form-control"  name="profession" value="<?php echo $profession;?>" style="height:40px;">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-md-2 col-sm-3 col-xs-12 control-label">Hobby</label>
                                 <div class="col-md-10 col-sm-9 col-xs-12">
-                                    <input type="text" class="form-control" value="Rebecca" style="height:40px;">
+                                    <input type="text" class="form-control"  name="hobby" value="<?php echo $hobby;?>" style="height:40px;">
                                 </div>
                             </div>
                         </fieldset>
