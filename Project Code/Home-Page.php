@@ -1,3 +1,13 @@
+<?php
+
+    session_start();
+    unset($_SESSION['login_user']);
+    
+ ?>
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 

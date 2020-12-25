@@ -205,7 +205,7 @@
                       <h6 class="mb-0">Mobile No</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                      <?php echo $mobileno; ?>
+                      <?php echo '0'.$mobileno; ?>
                     </div>
                   </div>
                   <hr>
