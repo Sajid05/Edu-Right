@@ -143,7 +143,7 @@
 
 
                     if(!empty($profilepic)){
-                    echo '<img src="data:image/jpeg;base64,'.base64_encode( $profilepic ).'" alt="Admin" class="rounded-circle" height="150" width="150"/>';
+                    echo '<img src="data:image/jpeg;base64,'. $profilepic.'" alt="Admin" class="rounded-circle" height="150" width="150"/>';
                   }
 
                     else
@@ -164,7 +164,7 @@
                       <p class="text-muted font-size-sm"><text style="color:black;">Feni Sadar</text></p><br><br>
                       <a href="../Update-Student-Profile/Update-Student-Profile.php"<button class="btn btn-primary">Update Profile</button></a> <br> <br>
                       <button class="btn btn-primary">View Sponsor's Profile</button> <br> <br>
-                      <a href="../Home-Page.php"><button class="btn btn-outline-primary"><?php $_SESSION['login_user']=""; ?>Log out</button> <br> <br>
+                      <a href="../Home-Page.php"><button class="btn btn-outline-primary">Log out</button></a> <br> <br>
                     </div>
                   </div>
                 </div>
@@ -264,7 +264,7 @@
 
 
                         if(!empty($result)){
-                        echo '<img src="data:image/jpeg;base64,'.base64_encode( $result ).'" alt="Admin" height="300" width="450"/>';
+                        echo '<img src="data:image/jpeg;base64,'.$result.'" alt="Admin" height="300" width="450"/>';
                       }
 
                         else

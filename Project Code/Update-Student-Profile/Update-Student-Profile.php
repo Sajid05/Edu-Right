@@ -41,13 +41,29 @@
        $hobby = mysqli_real_escape_string($db,$_POST['hobby']);
 
 
-       //$profilepic = file_get_contents($_FILES['profilepic']['tmp_name']);
-       //$profilepic = mysql_real_escape_string($profilepic);
-       //$profilepic = mysqli_real_escape($db,$_POST['profilepic']);
-
  		 	 //Update
 			 $query = "UPDATE student SET Full_Name='$fullname', Mobile_No='$mobileno', DOB='$dob', Address='$address', School='$school', Standard='$standard', Hobby='$hobby' WHERE Email='$email'";
 			 mysqli_query($db, $query);
+
+
+			 //Update Profile_Picture
+			 $profilepic = $_FILES['profilepic']['tmp_name'];
+			 if($profilepic){
+
+			 		$profilepic = base64_encode(file_get_contents(addslashes($profilepic)));
+					$query = "UPDATE student SET Profile_Picture='$profilepic' WHERE Email='$email'";
+	 			 	mysqli_query($db, $query);
+			 }
+
+
+			 //Update Result
+			 $result = $_FILES['result']['tmp_name'];
+			 if($result){
+			 		$result = base64_encode(file_get_contents(addslashes($result)));
+					$query = "UPDATE student SET Result='$result' WHERE Email='$email'";
+			 		mysqli_query($db, $query);
+				}
+
 
 			 header('location: ../Student-Profile/Student-Profile.php');
 
@@ -721,7 +737,7 @@ input[type="submit"]:hover{
 
                 <div class="content-panel">
                     <h2 class="title">Personal Info</h2><br>
-                    <form class="form-horizontal" action="" method="POST">
+                    <form class="form-horizontal" action="" method="POST" enctype="multipart/form-data">
                         <fieldset class="fieldset">
                             <div class="form-group avatar">
                                 <figure class="figure col-md-2 col-sm-3 col-xs-12">
@@ -729,18 +745,18 @@ input[type="submit"]:hover{
                                   <?php
                                   if(!empty($profilepic))
                                   {
-                                      echo '<img src="data:image/jpeg;base64,'.base64_encode( $profilepic ).'" alt="Admin" class="rounded-circle" height="150" width="150"/>';
+                                      echo '<img src="data:image/jpeg;base64,'.$profilepic.'" alt="Admin" height="150" width="150"/>';
                                   }
 
                                   else
                                   {
-                                    echo '<img src = "Default-Avatar.png" alt = "" class="rounded-circle" height="150" width="150">';
+                                    echo '<img src = "Default-Avatar.png" alt = ""  height="150" width="150">';
                                   }
                                   ?>
 
                                 </figure>
                                 <div class="form-inline col-md-10 col-sm-9 col-xs-1">
-                                    <input type="file" class="file-uploader pull-left">
+                                    <input type="file" class="file-uploader pull-left" name='profilepic'>
                                     <button type="submit" class="btn btn-sm btn-default-alt pull-left">Update Image</button>
                                 </div>
                             </div>
@@ -797,7 +813,7 @@ input[type="submit"]:hover{
                                     <?php
                                     if(!empty($result))
                                     {
-                                        echo '<img class="img-rounded img-responsive" src="data:image/jpeg;base64,'.base64_encode( $result ).'" alt=""/>';
+                                        echo '<img class="img-rounded img-responsive" src="data:image/jpeg;base64,'.$result.'" alt=""/>';
                                     }
 
                                     else
@@ -808,7 +824,7 @@ input[type="submit"]:hover{
 
                                   </figure>
                                     <div class="form-inline">
-                                      <input type="file" class="file-uploader pull-left">
+                                      <input type="file" class="file-uploader pull-left" name="result">
                                       <button type="submit" class="btn btn-sm btn-default-alt pull-left">Update Image</button>
                                   </div>
                               </div>

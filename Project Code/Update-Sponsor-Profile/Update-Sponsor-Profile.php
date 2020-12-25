@@ -40,13 +40,24 @@
        $hobby = mysqli_real_escape_string($db,$_POST['hobby']);
 
 
-       //$profilepic = file_get_contents($_FILES['profilepic']['tmp_name']);
-       //$profilepic = mysql_real_escape_string($profilepic);
-       //$profilepic = mysqli_real_escape($db,$_POST['profilepic']);
-
  		 	 //Update
 			 $query = "UPDATE sponsor SET Full_Name='$fullname', Mobile_No='$mobileno', DOB='$dob', Address='$address', Education='$education', Profession='$profession', Hobby='$hobby' WHERE Email='$email'";
 			 mysqli_query($db, $query);
+
+
+
+
+
+			 //Update Profile_Picture
+			 $profilepic = $_FILES['profilepic']['tmp_name'];
+
+			 if($profilepic){
+
+				 $profilepic = base64_encode(file_get_contents(addslashes($profilepic)));
+				 $query = "UPDATE sponsor SET Profile_Picture='$profilepic' WHERE Email='$email'";
+				 mysqli_query($db, $query);
+
+			 }
 
 			 header('location: ../Sponsor-Profile/Sponsor-Profile.php');
 
@@ -718,19 +729,15 @@ input[type="submit"]:hover{
 
                 <div class="content-panel">
                     <h2 class="title">Personal Info</h2><br>
-                    <form class="form-horizontal" action="" method="POST" >
+                    <form class="form-horizontal" action="" method="POST" enctype="multipart/form-data">
                         <fieldset class="fieldset">
                             <div class="form-group avatar">
                                 <figure class="figure col-md-2 col-sm-3 col-xs-12">
 
-
                                   <?php
-
-
-
                                   if(!empty($profilepic))
                                   {
-                                      echo '<img src="data:image/jpeg;base64,'.base64_encode( $profilepic ).'" alt="Admin" class="rounded-circle" height="150" width="150"/>';
+                                      echo '<img src="data:image/jpeg;base64,'.$profilepic.'" alt="Admin" class="rounded-circle" height="150" width="150"/>';
                                   }
 
                                   else
@@ -738,7 +745,7 @@ input[type="submit"]:hover{
                                     echo '<img src = "Default-Avatar.png" alt = "" class="rounded-circle" height="150" width="150">';
                                   }
                                   ?>
-                                    <!--<img class="img-rounded img-responsive" src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="">-->
+
                                 </figure>
                                 <div class="form-inline col-md-10 col-sm-9 col-xs-12">
                                     <input type="file" class="file-uploader pull-left" name="profilepic">

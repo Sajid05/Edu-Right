@@ -141,8 +141,8 @@
 
 
                       if(!empty($profilepic)){
-                      echo '<img src="data:image/jpeg;base64,'.base64_encode( $profilepic ).'" alt="Admin" class="rounded-circle" height="150" width="150"/>';
-                    }
+                       echo '<img src="data:image/jpeg;base64,'.$profilepic .'" alt="Admin" class="rounded-circle" height="150" width="150"/>';
+                    	}
 
                       else
                       {
@@ -161,7 +161,7 @@
                       <a href="../Update-Sponsor-Profile/Update-Sponsor-Profile.php"><button class="btn btn-primary">Update Profile</button></a> <br> <br>
                       <button class="btn btn-primary">Send Money</button> <br> <br>
                       <button class="btn btn-primary">Sponsored Students</button> <br> <br>
-                      <a href="../Home-Page.php"><button class="btn btn-outline-primary"><?php $_SESSION['login_user']=""; ?>Log out</button></a> <br> <br>
+                      <a href="../Home-Page.php"><button class="btn btn-outline-primary">Log out</button></a> <br> <br>
                     </div>
                   </div>
                 </div>
