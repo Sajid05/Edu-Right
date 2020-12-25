@@ -151,17 +151,17 @@
 
 
 
-                      ?> 
+                      ?>
                     <div class="mt-3">
                       <?php
 
-                         echo '<h4>'.$myusername.'</h4> <br><br>'; 
+                         echo '<h4>'.$myusername.'</h4> <br><br>';
 
-                      ?>    
+                      ?>
                       <a href="../Update-Sponsor-Profile/Update-Sponsor-Profile.php"><button class="btn btn-primary">Update Profile</button></a> <br> <br>
                       <button class="btn btn-primary">Send Money</button> <br> <br>
                       <button class="btn btn-primary">Sponsored Students</button> <br> <br>
-                      <button class="btn btn-outline-primary">Log out</button> <br> <br>
+                      <a href="../Home-Page.php"><button class="btn btn-outline-primary"><?php $_SESSION['login_user']=""; ?>Log out</button></a> <br> <br>
                     </div>
                   </div>
                 </div>
