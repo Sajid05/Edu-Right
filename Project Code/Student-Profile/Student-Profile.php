@@ -1,3 +1,39 @@
+<?php
+
+		$db = new mysqli("localhost","root","","edu_right");
+
+		if ($db -> connect_errno) {
+  		echo "Failed to connect to MySQL: " . $db -> connect_error;
+  		exit();
+		}
+  	session_start();
+
+    $email = $_SESSION['login_user'];
+
+
+
+
+    $sql = "SELECT * FROM student WHERE Email = '$email'";
+    $result = mysqli_query($db,$sql);
+    $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
+
+    $fullname = $row['Full_Name'];
+    $myusername = $row["Username"];
+    $mobileno = $row["Mobile_No"];
+    $dob = $row["DOB"];
+    $address = $row["Address"];
+    $school = $row["School"];
+    $standard = $row["Standard"];
+    $hobby = $row["Hobby"];
+    $profilepic = $row["Profile_Picture"];
+    $result = $row["Result"];
+
+?>
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -103,9 +139,27 @@
                 <div class="card-body profile">
                   <div class="d-flex flex-column align-items-center text-center">
                     <br> <br><br>
-                    <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="150">
+                    <?php
+
+
+                    if(!empty($profilepic)){
+                    echo '<img src="data:image/jpeg;base64,'.base64_encode( $profilepic ).'" alt="Admin" class="rounded-circle" height="150" width="150"/>';
+                  }
+
+                    else
+                    {
+                      echo '<img src = "Default-Avatar.png" alt = "" class="rounded-circle" height="150" width="150">';
+                    }
+
+
+
+                    ?>
                     <div class="mt-3">
-                      <h4>Rashed</h4>
+                      <?php
+
+                         echo '<h4>'.$myusername.'</h4> <br><br>';
+
+                      ?>
                       <p class="text-secondary mb-1"><text style="color:black;">Student of Class 5</text></p>
                       <p class="text-muted font-size-sm"><text style="color:black;">Feni Sadar</text></p><br><br>
                       <a href="../Update-Student-Profile/Update-Student-Profile.php"<button class="btn btn-primary">Update Profile</button></a> <br> <br>
@@ -124,7 +178,7 @@
                       <h6 class="mb-0">Full Name</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                      Sample Name
+                      <?php echo $fullname; ?>
                     </div>
                   </div>
                   <hr>
@@ -133,7 +187,7 @@
                       <h6 class="mb-0">Username</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                      Sample username
+                      <?php echo $myusername; ?>
                     </div>
                   </div>
                   <hr>
@@ -142,7 +196,7 @@
                       <h6 class="mb-0">Email</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                      Sample Email
+                      <?php echo $email; ?>
                     </div>
                   </div>
                   <hr>
@@ -151,7 +205,7 @@
                       <h6 class="mb-0">Mobile No</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                      Sample Mobile No
+                      <?php echo $mobileno; ?>
                     </div>
                   </div>
                   <hr>
@@ -160,7 +214,7 @@
                       <h6 class="mb-0">Date of Birth</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                      Sample DOB
+                      <?php echo $dob; ?>
                     </div>
                   </div>
                   <hr>
@@ -169,7 +223,7 @@
                       <h6 class="mb-0">Address</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                      Sample Address
+                      <?php echo $address; ?>
                     </div>
                   </div>
                   <hr>
@@ -178,7 +232,7 @@
                       <h6 class="mb-0">School</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                      Sample School
+                      <?php echo $school; ?>
                     </div>
                   </div>
                   <hr>
@@ -187,7 +241,7 @@
                       <h6 class="mb-0">Standard</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                      Sample Standard
+                      <?php echo $standard; ?>
                     </div>
                   </div>
                   <hr>
@@ -196,7 +250,7 @@
                       <h6 class="mb-0">Hobby</h6>
                     </div>
                       <div class="col-sm-9 text-secondary">
-                          Sample Hobby
+                          <?php echo $hobby; ?>
                       </div>
                     </div>
                   <hr>
@@ -206,7 +260,21 @@
                       <h6 class="mb-0">Result</h6>
                     </div>
                       <div class="col-sm-9 text-secondary">
-                          Sample Result
+                        <?php
+
+
+                        if(!empty($result)){
+                        echo '<img src="data:image/jpeg;base64,'.base64_encode( $result ).'" alt="Admin" height="300" width="450"/>';
+                      }
+
+                        else
+                        {
+                          echo '<img src = "Default-Avatar.png" alt = "" height="300" width="450">';
+                        }
+
+
+
+                        ?>
                       </div>
                     </div>
                   <hr>
