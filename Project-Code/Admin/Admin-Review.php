@@ -1,5 +1,5 @@
 <?php
-/*
+
 		$db = new mysqli("localhost","root","","edu_right");
 
 		if ($db -> connect_errno) {
@@ -8,25 +8,64 @@
 		}
   	session_start();
 
-    $email = $_SESSION['login_user'];
+    $current_row = $_SESSION["Current_row"];
 
-
-
-
-    $sql = "SELECT * FROM student WHERE Email = '$email'";
+    $sql = "SELECT * FROM pre_student LIMIT $current_row,1";
     $result = mysqli_query($db,$sql);
-    $row = mysqli_fetch_array($result,MYSQLI_ASSOC);*/
+    $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
 
-/*    $fullname = $row['Full_Name'];
+    $fullname = $row['Full_Name'];
     $myusername = $row["Username"];
+    $email = $row["Email"];
     $mobileno = $row["Mobile_No"];
-    $dob = $row["DOB"];
-    $address = $row["Address"];
-    $school = $row["School"];
-    $standard = $row["Standard"];
-    $hobby = $row["Hobby"];
-    $profilepic = $row["Profile_Picture"];
-    $result = $row["Result"];*/
+    $mypassword = $row["Password"];
+    $application = $row["Eligibility"];
+
+
+    if(isset($_POST['previous'])) {
+
+      if($_SESSION["Current_row"]>0){
+        $_SESSION["Current_row"] = $_SESSION["Current_row"]-1;
+        header("location: ./admin-review.php");
+
+      }
+      //less than 0 show korte hobe
+
+    }
+    if(isset($_POST['reject'])){
+
+      $sql = "DELETE FROM pre_student WHERE Email = '$email'";
+      $result = mysqli_query($db,$sql);
+      header("location: ./admin-review.php");
+
+
+      ///last er jon k reject korle problem kore
+
+    }
+    if(isset($_POST['approve'])) {
+
+        //inserting in Student table
+        $sql = "INSERT INTO Student (Full_Name, Username, Email, Mobile_No, Password) VALUES ('$fullname', '$myusername', '$email', '$mobileno', '$mypassword')";
+        $result = mysqli_query($db,$sql);
+
+        //inserting in Review Table
+        $sql = "INSERT INTO Request (Email) VALUES ('$email')";
+        $result = mysqli_query($db,$sql);
+
+        //delete from pre_student table
+        $sql = "DELETE FROM pre_student WHERE Email = '$email'";
+        $result = mysqli_query($db,$sql);
+        header("location: ./admin-review.php");
+
+        //last er jon k approve korle problem korbe
+
+    }
+    if(isset($_POST['next'])) {
+
+        //greater than size ta check korte hobe
+        $_SESSION["Current_row"] = $_SESSION["Current_row"]+1;
+        header("location: ./admin-review.php");
+    }
 
 ?>
 
@@ -168,13 +207,13 @@
 <div class="container">
     <div class="main-body">
 
-    
+
           <nav aria-label="breadcrumb" class="main-breadcrumb">
           <b> <h3>Review Students </h3></b> <hr class = "test">
           </nav>
-        
 
-      
+
+
               <div class="card mb-3">
                 <div class="card-body">
                   <div class="row">
@@ -182,7 +221,7 @@
                       <h6 class="mb-0">Full Name</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                     <?php echo '<span style="color:white;">'.'Hello'.'</span>'; ?>
+                     <?php echo '<span style="color:white;">'.$fullname.'</span>'; ?>
                     </div>
                   </div>
                   <hr>
@@ -200,7 +239,7 @@
                       <h6 class="mb-0">Email</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                      <?php echo $email; ?>
+                      <?php echo '<span style="color:white;">'.$email.'</span>'; ?>
                     </div>
                   </div>
                   <hr>
@@ -209,7 +248,7 @@
                       <h6 class="mb-0">Mobile No</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                      <?php echo '0'.$mobileno; ?>
+                      <?php echo '<span style="color:white;">'.'0'.$mobileno.'</span>'; ?>
                     </div>
                   </div>
                   <hr>
@@ -219,37 +258,36 @@
                       <h6 class="mb-0">Application</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                      <?php echo '0'.$mobileno; ?>
+                      <?php echo '<span style="color:white;">'.$application.'</span>'; ?>
                     </div>
                   </div>
                   <hr>
-                  
 
-                 
+
+
 
                 </div>
-
+                    <form method="post">
                       <div class="container-login100-form-btn">
-                          <button class="login100-form-btn" style="float: left; width: 100px; height: 50px; margin-left: 15px; margin-bottom: 15px; border-radius: 22px;">
+
+                          <button class="login100-form-btn" style="float: left; width: 100px; height: 50px; margin-left: 15px; margin-bottom: 15px; border-radius: 22px;" name="previous">
                            Previous
                           </button>
 
-                          <button class="login100-form-btn button_test" style="width: 100px;height: 50px;margin-bottom: 15px; border-radius: 22px;">
+                          <button class="login100-form-btn button_test" style="width: 100px;height: 50px;margin-bottom: 15px; border-radius: 22px;" name="reject">
                             Reject
                           </button>
 
-                        
-                          <button class="login100-form-btn" style="float: center;width: 100px;height: 50px;margin-bottom: 15px; border-radius: 22px;">
+                          <button class="login100-form-btn" style="float: center;width: 100px;height: 50px;margin-bottom: 15px; border-radius: 22px;" name="approve">
                            Approve
                           </button>
-                        
 
-                        
-                          <button class="login100-form-btn" style="float: right;width: 100px;height: 50px;margin-right: 15px; margin-bottom: 15px; border-radius: 22px;">
+                          <button class="login100-form-btn" style="float: right;width: 100px;height: 50px;margin-right: 15px; margin-bottom: 15px; border-radius: 22px;" name="next">
                            Next
                           </button>
-                        </div>
 
+                      </div>
+                    </form>
               </div>
 
 
