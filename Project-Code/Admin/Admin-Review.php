@@ -1,0 +1,264 @@
+<?php
+/*
+		$db = new mysqli("localhost","root","","edu_right");
+
+		if ($db -> connect_errno) {
+  		echo "Failed to connect to MySQL: " . $db -> connect_error;
+  		exit();
+		}
+  	session_start();
+
+    $email = $_SESSION['login_user'];
+
+
+
+
+    $sql = "SELECT * FROM student WHERE Email = '$email'";
+    $result = mysqli_query($db,$sql);
+    $row = mysqli_fetch_array($result,MYSQLI_ASSOC);*/
+
+/*    $fullname = $row['Full_Name'];
+    $myusername = $row["Username"];
+    $mobileno = $row["Mobile_No"];
+    $dob = $row["DOB"];
+    $address = $row["Address"];
+    $school = $row["School"];
+    $standard = $row["Standard"];
+    $hobby = $row["Hobby"];
+    $profilepic = $row["Profile_Picture"];
+    $result = $row["Result"];*/
+
+?>
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+
+    <title>Profile</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+    <style type="text/css">
+    	body{
+    margin-top:20px;
+    color: #1a202c;
+    text-align: left;
+    background-color: #e2e8f0;
+}
+.main-body {
+    padding: 15px;
+}
+.card {
+    box-shadow: 0 1px 3px 0 rgba(0,0,0,.1), 0 1px 2px 0 rgba(0,0,0,.06);
+}
+
+.card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 0 solid rgba(0,0,0,.125);
+    border-radius: 17px;
+}
+
+.card-body {
+    flex: 1 1 auto;
+    min-height: 1px;
+    adding: 1rem;
+    border-radius: 17px;
+}
+
+.gutters-sm {
+    margin-right: -8px;
+    margin-left: -8px;
+}
+
+.gutters-sm>.col, .gutters-sm>[class*=col-] {
+    padding-right: 8px;
+    padding-left: 8px;
+}
+.mb-3, .my-3 {
+    margin-bottom: 1rem!important;
+    border-radius: 17px;
+}
+
+.bg-gray-300 {
+    background-color: #e2e8f0;
+}
+.h-100 {
+    height: 100%!important;
+}
+.shadow-none {
+    box-shadow: none!important;
+}
+
+
+.btn-primary {
+  background-color: #f55858;
+  border-color: #f55858;
+}
+
+.btn-outline-primary {
+  background-color: #f55858;
+  border-color: #f55858;
+  color: white;
+}
+
+.profile{
+
+  background-image: linear-gradient(to right top, #8c7eeb, #4594f5, #00a5ef, #00b0dd, #00b8c7, #00b6c5, #00b4c4, #00b2c2, #00a6d1, #3397d7, #6984d0, #926ebb);
+
+}
+
+.mb-3{
+  background: #9152f8;
+  background: -webkit-linear-gradient(top, #7579ff, #b224ef);
+  background: -o-linear-gradient(top, #7579ff, #b224ef);
+  background: -moz-linear-gradient(top, #7579ff, #b224ef);
+  background: linear-gradient(top, #7579ff, #b224ef);
+
+  font-size: 20px;
+}
+
+.mb-0
+{
+  font-size: 20px;
+
+}
+
+.col-sm-3{
+  color:white;
+
+}
+.test{
+  background-color: black;
+}
+
+.button_test{
+  margin-left: 30%;
+}
+
+
+.login100-form-btn
+{
+  /*background-color:#374366;*/
+  background-color:white;
+  color: purple;
+
+}
+
+.login100-form-btn:hover{
+  background-color: transparent;
+  border-color: white;
+  border-width: 2.5px;
+  color:white;
+}
+
+
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="main-body">
+
+    
+          <nav aria-label="breadcrumb" class="main-breadcrumb">
+          <b> <h3>Review Students </h3></b> <hr class = "test">
+          </nav>
+        
+
+      
+              <div class="card mb-3">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Full Name</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                     <?php echo '<span style="color:white;">'.'Hello'.'</span>'; ?>
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Username</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      <?php echo '<span style="color:white;">'.$myusername.'</span>'; ?>
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Email</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      <?php echo $email; ?>
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Mobile No</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      <?php echo '0'.$mobileno; ?>
+                    </div>
+                  </div>
+                  <hr>
+
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Application</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      <?php echo '0'.$mobileno; ?>
+                    </div>
+                  </div>
+                  <hr>
+                  
+
+                 
+
+                </div>
+
+                      <div class="container-login100-form-btn">
+                          <button class="login100-form-btn" style="float: left; width: 100px; height: 50px; margin-left: 15px; margin-bottom: 15px; border-radius: 22px;">
+                           Previous
+                          </button>
+
+                          <button class="login100-form-btn button_test" style="width: 100px;height: 50px;margin-bottom: 15px; border-radius: 22px;">
+                            Reject
+                          </button>
+
+                        
+                          <button class="login100-form-btn" style="float: center;width: 100px;height: 50px;margin-bottom: 15px; border-radius: 22px;">
+                           Approve
+                          </button>
+                        
+
+                        
+                          <button class="login100-form-btn" style="float: right;width: 100px;height: 50px;margin-right: 15px; margin-bottom: 15px; border-radius: 22px;">
+                           Next
+                          </button>
+                        </div>
+
+              </div>
+
+
+        </div>
+    </div>
+<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+
+</script>
+</body>
+</html>
