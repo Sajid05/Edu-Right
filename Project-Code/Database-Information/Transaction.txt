@@ -2,14 +2,25 @@
 
 Student_Email 	VARCHAR 
 Sponsor_Email 	VARCHAR 
-Trx_Date        Date
+Trx_Date        TIMESTAMP
 
 
 EVENT:
 
+1.
+delete_from_transaction
+Execute every: 30 DAY
+Start: 2020-12-30 20:20:18
 
-CREATE DEFINER=`root`@`localhost` EVENT `delete_from_transaction` ON SCHEDULE EVERY 1 DAY STARTS '2020-12-30 19:51:03' ON COMPLETION NOT PRESERVE ENABLE DO DELETE FROM transaction WHERE `Trx_Date` < CURRENT_TIMESTAMP - INTERVAL 30 DAY;
+Definition: DELETE FROM transaction
+	    WHERE `Trx_Date` <= CURRENT_TIMESTAMP - INTERVAL 30 DAY
 
+2.
+insert_into_request
+Execute every: 30 DAY
+Start: 2020-12-30 20:20:17
 
-SELECT `Student_Email` FROM transaction 
-	WHERE `Trx_Date` < CURRENT_TIMESTAMP - 			INTERVAL 2 MINUTE
+Definition: INSERT INTO request (Email)
+	    SELECT Student_Email
+	    FROM transaction
+	    WHERE `Trx_Date` <= CURRENT_TIMESTAMP - INTERVAL 30 DAY

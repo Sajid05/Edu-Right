@@ -12,3 +12,7 @@ Education VARCHAR
 Profession VARCHAR
 Hobby VARCHAR
 Profile_Picture MBLOB
+
+
+
+
