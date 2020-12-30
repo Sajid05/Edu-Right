@@ -1,0 +1,15 @@
+================transaction============
+
+Student_Email 	VARCHAR 
+Sponsor_Email 	VARCHAR 
+Trx_Date        Date
+
+
+EVENT:
+
+
+CREATE DEFINER=`root`@`localhost` EVENT `delete_from_transaction` ON SCHEDULE EVERY 1 DAY STARTS '2020-12-30 19:51:03' ON COMPLETION NOT PRESERVE ENABLE DO DELETE FROM transaction WHERE `Trx_Date` < CURRENT_TIMESTAMP - INTERVAL 30 DAY;
+
+
+SELECT `Student_Email` FROM transaction 
+	WHERE `Trx_Date` < CURRENT_TIMESTAMP - 			INTERVAL 2 MINUTE
