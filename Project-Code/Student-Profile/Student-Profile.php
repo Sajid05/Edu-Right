@@ -163,7 +163,7 @@
                       <p class="text-secondary mb-1"><text style="color:black;">Student of Class 5</text></p>
                       <p class="text-muted font-size-sm"><text style="color:black;">Feni Sadar</text></p><br><br>
                       <a href="../Update-Student-Profile/Update-Student-Profile.php"<button class="btn btn-primary">Update Profile</button></a> <br> <br>
-                      <button class="btn btn-primary">View Sponsor's Profile</button> <br> <br>
+                      <a href= "../View-Sponsor-Profile/View-Sponsor-Profile.php"><button class="btn btn-primary">View Sponsor's Profile</button></a> <br> <br>
                       <a href="../Home-Page.php"><button class="btn btn-outline-primary">Log out</button></a> <br> <br>
                     </div>
                   </div>
@@ -269,7 +269,7 @@
 
                         else
                         {
-                          echo '<img src = "Default-Avatar.png" alt = "" height="300" width="450">';
+                          echo 'Result not added yet';
                         }
 
 
