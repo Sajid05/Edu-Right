@@ -27,6 +27,8 @@
     $hobby = $row["Hobby"];
     $profilepic = $row["Profile_Picture"];
 
+		$_SESSION['Current_row'] = 0;
+
 ?>
 
 
@@ -160,7 +162,7 @@
                       ?>
                       <a href="../Update-Sponsor-Profile/Update-Sponsor-Profile.php"><button class="btn btn-primary">Update Profile</button></a> <br> <br>
                       <button class="btn btn-primary">Send Money</button> <br> <br>
-                      <button class="btn btn-primary">Sponsored Students</button> <br> <br>
+                      <a href="../View-Student-Profile/View-Student-Profile.php"><button class="btn btn-primary">Sponsored Students</button></a> <br> <br>
                       <a href="../Home-Page.php"><button class="btn btn-outline-primary">Log out</button></a> <br> <br>
                     </div>
                   </div>

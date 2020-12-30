@@ -32,7 +32,7 @@
     $sponsor_profession = $row2["Profession"];
     $sponsor_hobby = $row2["Hobby"];
     $sponsor_profilepic = $row2["Profile_Picture"];
-    
+
 
 ?>
 
@@ -119,7 +119,7 @@
 .profile{
 
   background-image: linear-gradient(to right top, #8c7eeb, #4594f5, #00a5ef, #00b0dd, #00b8c7, #00b6c5, #00b4c4, #00b2c2, #00a6d1, #3397d7, #6984d0, #926ebb);
-  
+
 }
 
     </style>
@@ -145,7 +145,7 @@
                 <div class="card-body profile">
                   <div class="d-flex flex-column align-items-center text-center">
                     <br><br><br><br><br><br><br>
-                    
+
 
                     <?php
 
@@ -179,7 +179,7 @@
 
             <div class="col-md-8">
               <div class="card mb-3"  >
-                
+
                 <div class="card-body">
                   <div class="row">
                     <div class="col-sm-3">
@@ -264,7 +264,7 @@
                   <hr>
 
                 </div>
-                
+
               </div>
             </div>
           </div>

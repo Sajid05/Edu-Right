@@ -1,3 +1,67 @@
+<?php
+
+    $db = new mysqli("localhost","root","","edu_right");
+
+    if ($db -> connect_errno) {
+      echo "Failed to connect to MySQL: " . $db -> connect_error;
+      exit();
+    }
+    session_start();
+
+    $email = $_SESSION['login_user'];
+
+
+    $sql = "SELECT Student_Email FROM transaction WHERE Sponsor_Email = '$email'";
+    $result = mysqli_query($db,$sql);
+    $i = -1;
+
+
+    while($row = mysqli_fetch_array($result))
+    {
+      $i++;
+      if($i==$_SESSION['Current_row'])break;
+
+    }
+
+      $student_email = $row['Student_Email'];
+
+      $sql2 = "SELECT * FROM Student WHERE Email = '$student_email'";
+      $result2 = mysqli_query($db,$sql2);
+      $row2 = mysqli_fetch_array($result2,MYSQLI_ASSOC);
+
+      $student_fullname = $row2['Full_Name'];
+      $student_username = $row2["Username"];
+      $student_mobileno = $row2["Mobile_No"];
+      $student_dob = $row2["DOB"];
+      $student_address = $row2["Address"];
+      $student_school = $row2["School"];
+      $student_standard = $row2["Standard"];
+      $student_hobby = $row2["Hobby"];
+      $student_profilepic = $row2["Profile_Picture"];
+      $student_result = $row2["Result"];
+
+
+    if(isset($_POST['previous'])) {
+
+      if($_SESSION["Current_row"]>0){
+        $_SESSION["Current_row"] = $_SESSION["Current_row"]-1;
+        header("location: ./View-Student-Profile.php");
+
+      }
+      //less than 0 show korte hobe
+
+    }
+    if(isset($_POST['next'])) {
+
+        //greater than size ta check korte hobe
+        $_SESSION["Current_row"] = $_SESSION["Current_row"]+1;
+        header("location: ./View-Student-Profile.php");
+    }
+?>
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -77,8 +141,20 @@
 .profile{
 
   background-image: linear-gradient(to right top, #8c7eeb, #4594f5, #00a5ef, #00b0dd, #00b8c7, #00b6c5, #00b4c4, #00b2c2, #00a6d1, #3397d7, #6984d0, #926ebb);
-  
+
 }
+
+.login100-form-btn{
+  background-color: #f55858;
+  border-color: #f55858;
+}
+
+.login100-form-btn: hover{
+    background-color: #f55858;
+}
+
+
+
 
     </style>
 </head>
@@ -91,7 +167,7 @@
             <ol class="breadcrumb">
               <li class="breadcrumb-item"><a href="../Home-Page.php">Home</a></li>
               <li class="breadcrumb-item"><a href="../Home-Page.php">Sponsorship</a></li>
-               <li class="breadcrumb-item"><a href="../Home-Page.php">Sponsor Profile</a></li>
+               <li class="breadcrumb-item"><a href="../Sponsor-Profile/Sponsor-Profile.php">Sponsor Profile</a></li>
               <li class="breadcrumb-item active" aria-current="page">View Sponsored Student</li>
             </ol>
           </nav>
@@ -103,12 +179,43 @@
                 <div class="card-body profile">
                   <div class="d-flex flex-column align-items-center text-center">
                     <br> <br><br> <br><br><br><br>
-                    <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="150">
+                    <?php
+
+
+                    if(!empty($student_profilepic)){
+                     echo '<img src="data:image/jpeg;base64,'.$stuent_profilepic .'" alt="Admin" class="rounded-circle" height="150" width="150"/>';
+                    }
+
+                    else
+                    {
+                      echo '<img src = "Default-Avatar.png" alt = "" class="rounded-circle" height="150" width="150">';
+                    }
+
+
+
+                    ?>
                     <div class="mt-3">
-                      <h4>Rashed</h4>
+                      <?php
+
+                         echo '<h4>'.$student_username.'</h4> <br><br>';
+
+                      ?>
                       <p class="text-secondary mb-1"><text style="color:black;">Student of Class 5</text></p>
                       <p class="text-muted font-size-sm"><text style="color:black;">Feni Sadar</text></p><br><br><br><br><br>
                     </div>
+                    <form method="post">
+                      <div class="container-login100-form-btn">
+
+                          <button class="login100-form-btn" style="float: left; width: 100px; height: 50px; margin-left: 15px; margin-bottom: 15px; border-radius: 22px;" name="previous">
+                           Previous
+                          </button>
+
+                          <button class="login100-form-btn" style="float: right;width: 100px;height: 50px;margin-right: 15px; margin-bottom: 15px; border-radius: 22px;" name="next">
+                           Next
+                          </button>
+
+                      </div>
+                    </form>
                   </div>
                 </div>
               </div>
@@ -121,7 +228,7 @@
                       <h6 class="mb-0">Full Name</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                      Sample Name
+                      <?php echo $student_fullname; ?>
                     </div>
                   </div>
                   <hr>
@@ -130,7 +237,7 @@
                       <h6 class="mb-0">Username</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                      Sample username
+                      <?php echo $student_username; ?>
                     </div>
                   </div>
                   <hr>
@@ -139,7 +246,7 @@
                       <h6 class="mb-0">Email</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                      Sample Email
+                      <?php echo $student_email; ?>
                     </div>
                   </div>
                   <hr>
@@ -148,7 +255,7 @@
                       <h6 class="mb-0">Mobile No</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                      Sample Mobile No
+                      <?php echo $student_mobileno; ?>
                     </div>
                   </div>
                   <hr>
@@ -157,7 +264,7 @@
                       <h6 class="mb-0">Date of Birth</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                      Sample DOB
+                      <?php echo $student_dob; ?>
                     </div>
                   </div>
                   <hr>
@@ -166,7 +273,7 @@
                       <h6 class="mb-0">Address</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                      Sample Address
+                      <?php echo $student_address; ?>
                     </div>
                   </div>
                   <hr>
@@ -175,7 +282,7 @@
                       <h6 class="mb-0">School</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                      Sample School
+                      <?php echo $student_school; ?>
                     </div>
                   </div>
                   <hr>
@@ -184,7 +291,7 @@
                       <h6 class="mb-0">Standard</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                      Sample Standard
+                      <?php echo $student_standard; ?>
                     </div>
                   </div>
                   <hr>
@@ -193,7 +300,7 @@
                       <h6 class="mb-0">Hobby</h6>
                     </div>
                       <div class="col-sm-9 text-secondary">
-                          Sample Hobby
+                          <?php echo $student_hobby; ?>
                       </div>
                     </div>
                   <hr>
@@ -203,7 +310,21 @@
                       <h6 class="mb-0">Result</h6>
                     </div>
                       <div class="col-sm-9 text-secondary">
-                          Sample Result
+                        <?php
+
+
+                        if(!empty($student_result)){
+                         echo '<img src="data:image/jpeg;base64,'.$student_result .'" alt="Admin" class="rounded-circle" height="150" width="150"/>';
+                        }
+
+                        else
+                        {
+                          echo 'Result not added yet';
+                        }
+
+
+
+                        ?>
                       </div>
                     </div>
                   <hr>
