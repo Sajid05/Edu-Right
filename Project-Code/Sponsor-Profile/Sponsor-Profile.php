@@ -1,5 +1,7 @@
 <?php
 
+
+
 		$db = new mysqli("localhost","root","","edu_right");
 
 		if ($db -> connect_errno) {
@@ -7,6 +9,9 @@
   		exit();
 		}
   	session_start();
+
+		if(!isset($_SESSION['login_user']))
+			header("Location: ../Home-Page.php");  
 
     $email = $_SESSION['login_user'];
 

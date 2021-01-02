@@ -8,6 +8,9 @@
 		}
   	session_start();
 
+		if(!isset($_SESSION['login_user']))
+			header("Location: ../Home-Page.php");  
+
     $email = $_SESSION['login_user'];
 
 
