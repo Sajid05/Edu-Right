@@ -8,7 +8,6 @@
 	}
 	session_start();
 
-	echo "Transaction Successful";
 
 
 	$val_id=urlencode($_POST['val_id']);
@@ -64,27 +63,40 @@ if($code == 200 && !( curl_errno($handle)))
 	$validated_on = $result->validated_on;
 	$gw_version = $result->gw_version;
 
-	echo $status. " ".$tran_date." ".$tran_id." ".$card_type;
-
-
-
-	$sql = "SELECT Email FROM Request LIMIT 0,1";
-	$result = mysqli_query($db,$sql);
-	$row = mysqli_fetch_array($result,MYSQLI_ASSOC);
-
-	$student_email = $row['Email'];
-
-	$sql = "DELETE FROM Request WHERE Email = '$student_email'";
-	$result = mysqli_query($db,$sql);
 
 	$sponsor_email = $_GET["sponsor_email"];
 
-	$sql = "INSERT INTO Transaction (Student_Email, Sponsor_Email, Trx_Date) VALUES ('$student_email', '$sponsor_email', '$tran_date')";
+	$sql = "SELECT COUNT(*) FROM Request";
 	$result = mysqli_query($db,$sql);
+	$row = mysqli_fetch_array($result,MYSQLI_ASSOC);
+
+	$c = $row['COUNT(*)'];
+
+	if($c>0){
+
+		$sql = "SELECT Email FROM Request LIMIT 0,1";
+		$result = mysqli_query($db,$sql);
+		$row = mysqli_fetch_array($result,MYSQLI_ASSOC);
+
+		$student_email = $row['Email'];
+
+		$sql = "DELETE FROM Request WHERE Email = '$student_email'";
+		$result = mysqli_query($db,$sql);
+
+
+		$sql = "INSERT INTO Transaction (Student_Email, Sponsor_Email, Trx_Date) VALUES ('$student_email', '$sponsor_email', '$tran_date')";
+		$result = mysqli_query($db,$sql);
+
+	}
+	else {
+
+		$sql = "INSERT INTO Pending (Sponsor_Email) VALUES ('$sponsor_email')";
+		$result = mysqli_query($db,$sql);
+
+	}
 
 	$_SESSION['login_user'] = $sponsor_email;
 
-	echo $sponsor_email;
 
 } else {
 
@@ -134,7 +146,6 @@ if($code == 200 && !( curl_errno($handle)))
 	<div class="limiter">
 		<div class="container-login100" >
 			<div class="wrap-login100">
-				<form class="login100-form validate-form" action="" method="POST">
 
 
 							<h4 align="center" style="color:white;">TRANSACTION SUCCESSFUL</h4>
@@ -153,7 +164,6 @@ if($code == 200 && !( curl_errno($handle)))
 					</div>
 
 
-				</form>
 			</div>
 		</div>
 	</div>

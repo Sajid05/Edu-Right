@@ -8,6 +8,9 @@
     }
     session_start();
 
+    if($_SESSION['Total']==0)
+      header("location: ../Sponsor-Profile/Sponsor-Profile.php");
+
     $email = $_SESSION['login_user'];
 
 
@@ -39,7 +42,7 @@
       $student_hobby = $row2["Hobby"];
       $student_profilepic = $row2["Profile_Picture"];
       $student_result = $row2["Result"];
-      
+
 
     if(isset($_POST['previous'])) {
 

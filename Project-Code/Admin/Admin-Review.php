@@ -7,7 +7,11 @@
   		exit();
 		}
   	session_start();
-		echo $_SESSION['Total'];
+
+		if($_SESSION['Total']==0) {
+			header("location: ./admin.php");
+		}
+
 
     $current_row = $_SESSION["Current_row"];
 
@@ -58,11 +62,50 @@
         $sql = "INSERT INTO Student (Full_Name, Username, Email, Mobile_No, Password) VALUES ('$fullname', '$myusername', '$email', '$mobileno', '$mypassword')";
         $result = mysqli_query($db,$sql);
 
-        //inserting in Review Table
-        $sql = "INSERT INTO Request (Email) VALUES ('$email')";
-        $result = mysqli_query($db,$sql);
 
-        //delete from pre_student table
+
+
+
+				$sql = "SELECT COUNT(*) FROM Pending";
+				$result = mysqli_query($db,$sql);
+				$row = mysqli_fetch_array($result,MYSQLI_ASSOC);
+				$c = $row['COUNT(*)'];
+
+				if($c>0) {
+
+					//SELECT Email FROM Request LIMIT 0,1
+					$sql = "SELECT Sponsor_email FROM Pending LIMIT 0,1";
+					$result = mysqli_query($db,$sql);
+					$row = mysqli_fetch_array($result,MYSQLI_ASSOC);
+
+					$sponsor_email = $row['Sponsor_email'];
+
+					//$sql = "DELETE FROM Pending where Sponsor_email = '$sponsor_email'";
+					$sql = "DELETE FROM Pending where Sponsor_email = '$sponsor_email' LIMIT 1";
+					$result = mysqli_query($db,$sql);
+
+					date_default_timezone_set('Asia/Dhaka');
+					$date = date('Y-m-d H:i:s');
+					$sql = "INSERT INTO Transaction (Student_Email, Sponsor_Email, Trx_Date) VALUES ('$email', '$sponsor_email', '$date')";
+					$result = mysqli_query($db,$sql);
+
+				}
+				else {
+					//inserting in Review Table
+	        $sql = "INSERT INTO Request (Email) VALUES ('$email')";
+	        $result = mysqli_query($db,$sql);
+				}
+
+
+
+
+
+
+
+
+
+
+				//delete from pre_student table
         $sql = "DELETE FROM pre_student WHERE Email = '$email'";
         $result = mysqli_query($db,$sql);
 
