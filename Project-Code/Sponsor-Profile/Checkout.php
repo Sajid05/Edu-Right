@@ -9,9 +9,10 @@ $post_data['total_amount'] = $_GET["price"];
 $post_data['currency'] = "BDT";
 $post_data['tran_id'] = "SSLCZ_TEST_".uniqid();
 /*$post_data['success_url'] = "http://www.test.com/demo/send-money/success.php";*/
-$post_data['success_url'] = "http://www.edu-right.com/Edu-Right/Project-Code/Sponsor-Profile/Success.php";
-$post_data['fail_url'] = "http://localhost/new_sslcz_gw/fail.php";
-$post_data['cancel_url'] = "http://localhost/new_sslcz_gw/cancel.php";
+$sponsor_email = $_SESSION['login_user'];
+$post_data['success_url'] = "http://www.edu-right.com/Edu-Right/Project-Code/Sponsor-Profile/Success.php?sponsor_email=$sponsor_email";
+$post_data['fail_url'] = "http://www.edu-right.com/Edu-Right/Project-Code/Sponsor-Profile/Failure.php";
+$post_data['cancel_url'] = "http://www.edu-right.com/Edu-Right/Project-Code/Sponsor-Profile/Sponsor-Profile.php";
 # $post_data['multi_card_name'] = "mastercard,visacard,amexcard";  # DISABLE TO DISPLAY ALL AVAILABLE
 
 # EMI INFO
@@ -112,4 +113,3 @@ if(isset($sslcz['GatewayPageURL']) && $sslcz['GatewayPageURL']!="" ) {
 }
 
 ?>
- 

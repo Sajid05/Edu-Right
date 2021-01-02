@@ -1,105 +1,3 @@
-<?php
-
-	$db = new mysqli("localhost","root","","edu_right");
-
-	if ($db -> connect_errno) {
-		echo "Failed to connect to MySQL: " . $db -> connect_error;
-		exit();
-	}
-	session_start();
-
-	echo "Transaction Successful";
-
-
-	$val_id=urlencode($_POST['val_id']);
-$store_id=urlencode("iut5ff08af75aec8");
-$store_passwd=urlencode("iut5ff08af75aec8@ssl");
-$requested_url = ("https://sandbox.sslcommerz.com/validator/api/validationserverAPI.php?val_id=".$val_id."&store_id=".$store_id."&store_passwd=".$store_passwd."&v=1&format=json");
-
-$handle = curl_init();
-curl_setopt($handle, CURLOPT_URL, $requested_url);
-curl_setopt($handle, CURLOPT_RETURNTRANSFER, true);
-curl_setopt($handle, CURLOPT_SSL_VERIFYHOST, false); # IF YOU RUN FROM LOCAL PC
-curl_setopt($handle, CURLOPT_SSL_VERIFYPEER, false); # IF YOU RUN FROM LOCAL PC
-
-$result = curl_exec($handle);
-
-$code = curl_getinfo($handle, CURLINFO_HTTP_CODE);
-
-if($code == 200 && !( curl_errno($handle)))
-{
-
-	# TO CONVERT AS ARRAY
-	# $result = json_decode($result, true);
-	# $status = $result['status'];
-
-	# TO CONVERT AS OBJECT
-	$result = json_decode($result);
-
-	# TRANSACTION INFO
-	$status = $result->status;
-	$tran_date = $result->tran_date;
-	$tran_id = $result->tran_id;
-	$val_id = $result->val_id;
-	$amount = $result->amount;
-	$store_amount = $result->store_amount;
-	$bank_tran_id = $result->bank_tran_id;
-	$card_type = $result->card_type;
-
-	# EMI INFO
-	$emi_instalment = $result->emi_instalment;
-	$emi_amount = $result->emi_amount;
-	$emi_description = $result->emi_description;
-	$emi_issuer = $result->emi_issuer;
-
-	# ISSUER INFO
-	$card_no = $result->card_no;
-	$card_issuer = $result->card_issuer;
-	$card_brand = $result->card_brand;
-	$card_issuer_country = $result->card_issuer_country;
-	$card_issuer_country_code = $result->card_issuer_country_code;
-
-	# API AUTHENTICATION
-	$APIConnect = $result->APIConnect;
-	$validated_on = $result->validated_on;
-	$gw_version = $result->gw_version;
-
-	echo $status. " ".$tran_date." ".$tran_id." ".$card_type;
-
-
-
-	$sql = "SELECT Email FROM Request LIMIT 0,1";
-	$result = mysqli_query($db,$sql);
-	$row = mysqli_fetch_array($result,MYSQLI_ASSOC);
-
-	$student_email = $row['Email'];
-
-	$sql = "DELETE FROM Request WHERE Email = '$student_email'";
-	$result = mysqli_query($db,$sql);
-
-	$sponsor_email = $_GET["sponsor_email"];
-
-	$sql = "INSERT INTO Transaction (Student_Email, Sponsor_Email, Trx_Date) VALUES ('$student_email', '$sponsor_email', '$tran_date')";
-	$result = mysqli_query($db,$sql);
-
-	$_SESSION['login_user'] = $sponsor_email;
-
-	echo $sponsor_email;
-
-} else {
-
-	echo "Failed to connect with SSLCOMMERZ";
-}
-
-?>
-
-
-
-
-
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -137,11 +35,12 @@ if($code == 200 && !( curl_errno($handle)))
 				<form class="login100-form validate-form" action="" method="POST">
 
 
-							<h4 align="center" style="color:white;">TRANSACTION SUCCESSFUL</h4>
-							<br><br>
+							<h4 align="center" style="color:white;">TRANSACTION FAILED</h4>
+              <br><br>
+
 
 					<center style="color:white;">
-						Thanks for your contribution.<br> <br>
+						Please try again later. <br> <br>
 					</center>
 
 
