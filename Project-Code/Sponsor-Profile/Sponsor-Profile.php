@@ -43,6 +43,12 @@
 
 		$_SESSION['Total'] = $row['COUNT(*)'];
 
+		if(isset($_POST['logout'])) {
+
+      unset($_SESSION['login_user']);
+			header("location: ../home-page.php");
+    }
+
 ?>
 
 
@@ -141,7 +147,7 @@
           <nav aria-label="breadcrumb" class="main-breadcrumb">
             <ol class="breadcrumb">
               <li class="breadcrumb-item"><a href="../Home-Page.php">Home</a></li>
-              <li class="breadcrumb-item"><a href="../Home-Page.php">Sponsorship</a></li>
+              <li class="breadcrumb-item"><a href="../Home-Page.php#about2">Sponsorship</a></li>
               <li class="breadcrumb-item active" aria-current="page">Sponsor Profile</li>
             </ol>
           </nav>
@@ -174,10 +180,13 @@
                          echo '<h4>'.$myusername.'</h4> <br><br>';
 
                       ?>
+
                       <a href="../Update-Sponsor-Profile/Update-Sponsor-Profile.php"><button class="btn btn-primary">Update Profile</button></a> <br> <br>
                       <a href = "./Checkout.php?price=<?php echo 1000?>">  <button class="btn btn-primary">Send Money</button> </a> <br> <br>
                       <a href="../View-Student-Profile/View-Student-Profile.php"><button class="btn btn-primary">Sponsored Students</button></a> <br> <br>
-                      <a href="../Home-Page.php"><button class="btn btn-outline-primary">Log out</button></a> <br> <br>
+										<form method="post">
+                      <button class="btn btn-outline-primary" name="logout">Log out</button> <br> <br>
+										</form>
                     </div>
                   </div>
                 </div>

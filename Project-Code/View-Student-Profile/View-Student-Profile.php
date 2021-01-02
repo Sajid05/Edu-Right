@@ -174,7 +174,7 @@
           <nav aria-label="breadcrumb" class="main-breadcrumb">
             <ol class="breadcrumb">
               <li class="breadcrumb-item"><a href="../Home-Page.php">Home</a></li>
-              <li class="breadcrumb-item"><a href="../Home-Page.php">Sponsorship</a></li>
+              <li class="breadcrumb-item"><a href="../Home-Page.php#about2">Sponsorship</a></li>
                <li class="breadcrumb-item"><a href="../Sponsor-Profile/Sponsor-Profile.php">Sponsor Profile</a></li>
               <li class="breadcrumb-item active" aria-current="page">View Sponsored Student</li>
             </ol>

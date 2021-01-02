@@ -9,7 +9,7 @@
   	session_start();
 
 		if(!isset($_SESSION['login_user']))
-			header("Location: ../Home-Page.php");  
+			header("Location: ../Home-Page.php");
 
     $email = $_SESSION['login_user'];
 
@@ -30,6 +30,13 @@
     $hobby = $row["Hobby"];
     $profilepic = $row["Profile_Picture"];
     $result = $row["Result"];
+
+
+		if(isset($_POST['logout'])) {
+
+      unset($_SESSION['login_user']);
+			header("location: ../home-page.php");
+    }
 
 ?>
 
@@ -130,7 +137,7 @@
           <nav aria-label="breadcrumb" class="main-breadcrumb">
             <ol class="breadcrumb">
               <li class="breadcrumb-item"><a href="../Home-Page.php">Home</a></li>
-              <li class="breadcrumb-item"><a href="../Home-Page.php">Scholarship</a></li>
+              <li class="breadcrumb-item"><a href="../Home-Page.php#services">Scholarship</a></li>
               <li class="breadcrumb-item active" aria-current="page">Student Profile</li>
             </ol>
           </nav>
@@ -167,7 +174,10 @@
                       <p class="text-muted font-size-sm"><text style="color:black;">Feni Sadar</text></p><br><br>
                       <a href="../Update-Student-Profile/Update-Student-Profile.php"<button class="btn btn-primary">Update Profile</button></a> <br> <br>
                       <a href= "../View-Sponsor-Profile/View-Sponsor-Profile.php"><button class="btn btn-primary">View Sponsor's Profile</button></a> <br> <br>
-                      <a href="../Home-Page.php"><button class="btn btn-outline-primary">Log out</button></a> <br> <br>
+										<form method="POST">
+                      <a href="../Home-Page.php"><button class="btn btn-outline-primary" name="logout">Log out</button></a> <br> <br>
+										</form>
+
                     </div>
                   </div>
                 </div>
