@@ -11,7 +11,7 @@
   	session_start();
 
 		if(!isset($_SESSION['login_user']))
-			header("Location: ../Home-Page.php");  
+			header("Location: ../Home-Page.php");
 
     $email = $_SESSION['login_user'];
 
@@ -33,6 +33,14 @@
     $profilepic = $row["Profile_Picture"];
 
 		$_SESSION['Current_row'] = 0;
+
+
+
+		$sql = "SELECT COUNT(*) FROM transaction WHERE Sponsor_Email = '$email'";
+    $result = mysqli_query($db,$sql);
+    $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
+
+		$_SESSION['Total'] = $row['COUNT(*)'];
 
 ?>
 

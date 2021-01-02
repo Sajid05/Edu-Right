@@ -19,7 +19,6 @@
       $sql = "SELECT Username FROM admin WHERE Username = '$myusername' and Password = '$mypassword'";
       $result = mysqli_query($db,$sql);
       $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
-      $active = $row['active'];
 
       $count = mysqli_num_rows($result);
 
@@ -29,6 +28,13 @@
          // session_register("myusername");
          /*$_SESSION['login_user'] = $myusername;*/
 				 $_SESSION['Current_row'] = 0;
+
+				 $sql = "SELECT COUNT(*) FROM pre_student";
+		     $result = mysqli_query($db,$sql);
+		     $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
+
+		 		 $_SESSION['Total'] = $row['COUNT(*)'];
+
          header("location: ./admin-review.php");
 
       }else {

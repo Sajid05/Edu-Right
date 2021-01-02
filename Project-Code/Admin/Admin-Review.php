@@ -7,6 +7,7 @@
   		exit();
 		}
   	session_start();
+		echo $_SESSION['Total'];
 
     $current_row = $_SESSION["Current_row"];
 
@@ -29,17 +30,26 @@
         header("location: ./admin-review.php");
 
       }
-      //less than 0 show korte hobe
 
     }
     if(isset($_POST['reject'])){
 
       $sql = "DELETE FROM pre_student WHERE Email = '$email'";
       $result = mysqli_query($db,$sql);
-      header("location: ./admin-review.php");
 
+			$_SESSION['Total'] = $_SESSION['Total']-1;
 
-      ///last er jon k reject korle problem kore
+			if($_SESSION['Total'] == 0) {
+				header("location: ./admin.php");
+
+			}
+			else if($_SESSION['Total'] == $_SESSION['Current_row']) {
+				$_SESSION["Current_row"] = $_SESSION["Current_row"]-1;
+				header("location: ./admin-review.php");
+
+			}
+			else
+				header("location: ./admin-review.php");
 
     }
     if(isset($_POST['approve'])) {
@@ -55,16 +65,31 @@
         //delete from pre_student table
         $sql = "DELETE FROM pre_student WHERE Email = '$email'";
         $result = mysqli_query($db,$sql);
-        header("location: ./admin-review.php");
 
-        //last er jon k approve korle problem korbe
+				$_SESSION['Total'] = $_SESSION['Total']-1;
+
+				if($_SESSION['Total'] == 0) {
+					header("location: ./admin.php");
+
+				}
+				else if($_SESSION['Total'] == $_SESSION['Current_row']) {
+					$_SESSION["Current_row"] = $_SESSION["Current_row"]-1;
+					header("location: ./admin-review.php");
+				}
+				else {
+					header("location: ./admin-review.php");
+				}
 
     }
     if(isset($_POST['next'])) {
 
-        //greater than size ta check korte hobe
-        $_SESSION["Current_row"] = $_SESSION["Current_row"]+1;
-        header("location: ./admin-review.php");
+				if($_SESSION["Current_row"] == $_SESSION['Total']-1) {
+
+        }
+        else {
+        	$_SESSION["Current_row"] = $_SESSION["Current_row"]+1;
+        	header("location: ./admin-review.php");
+				}
     }
 
 ?>

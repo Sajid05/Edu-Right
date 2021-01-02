@@ -39,7 +39,7 @@
       $student_hobby = $row2["Hobby"];
       $student_profilepic = $row2["Profile_Picture"];
       $student_result = $row2["Result"];
-
+      
 
     if(isset($_POST['previous'])) {
 
@@ -53,9 +53,14 @@
     }
     if(isset($_POST['next'])) {
 
-        //greater than size ta check korte hobe
-        $_SESSION["Current_row"] = $_SESSION["Current_row"]+1;
-        header("location: ./View-Student-Profile.php");
+        if($_SESSION["Current_row"] == $_SESSION['Total']-1) {
+
+        }
+        else {
+          $_SESSION["Current_row"] = $_SESSION["Current_row"]+1;
+          header("location: ./View-Student-Profile.php");
+        }
+
     }
 ?>
 
