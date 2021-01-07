@@ -1,55 +1,63 @@
 <?php
 
+		$error = NULL;
+
 		$db = new mysqli("localhost","root","","edu_right");
 
 		if ($db -> connect_errno) {
-  		echo "Failed to connect to MySQL: " . $db -> connect_error;
-  		exit();
+			echo "Failed to connect to MySQL: " . $db -> connect_error;
+			exit();
 		}
-  	session_start();
+		session_start();
 
 		if($_SERVER["REQUEST_METHOD"] == "POST") {
-       // username and password sent from form
+			 // username and password sent from form
 
- 		 	 $fullname = mysqli_real_escape_string($db,$_POST['name']);
-       		$myusername = mysqli_real_escape_string($db,$_POST['username']);
+			 $fullname = mysqli_real_escape_string($db,$_POST['name']);
+					$myusername = mysqli_real_escape_string($db,$_POST['username']);
 			 $email = mysqli_real_escape_string($db,$_POST['email']);
 			 $mobileno = mysqli_real_escape_string($db,$_POST['MobileNo']);
-       $mypassword = mysqli_real_escape_string($db,$_POST['pass']);
+			 $mypassword = mysqli_real_escape_string($db,$_POST['pass']);
 
-       $sql = "SELECT Email FROM sponsor WHERE Email = '$email'";
-       $result = mysqli_query($db,$sql);
-       $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
-       $active = $row['active'];
+			 $sql = "SELECT Email FROM sponsor WHERE Email = '$email'";
+			 $result = mysqli_query($db,$sql);
+			 $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
+			 //$active = $row['active'];
 
-       $count = mysqli_num_rows($result);
+			 $count = mysqli_num_rows($result);
 
-       // If result matched $myusername and $mypassword, table row must be 1 row
+			 // If result matched $myusername and $mypassword, table row must be 1 row
 
-       if($count == 1) {
-          // session_register("myusername");
-        //  $_SESSION['login_user'] = $email;
+			 if($count == 1) {
+					// session_register("myusername");
+				//  $_SESSION['login_user'] = $email;
 
-          //header("location: ../Sponsor-Profile/Sponsor-Profile.php");
- 					echo "Email is taken";
+				$to = $email;
+				$subject = "Email Verification";
+				$messege = "BBBBBBBBBBBBBBBBBBBB";
+				$headers = "From: iut.project.sad@gmail.com";
 
-       }else {
+				mail($to,$subject,$messege,$headers);
 
- 			 		//Registration
 
-			  	$query = "INSERT INTO sponsor (Email, Username, Full_Name, Mobile_No, Password)
-			  			  VALUES('$email','$myusername','$fullname', '$mobileno', '$mypassword')";
+				$error = "Email is already taken.";
 
-			  	mysqli_query($db, $query);
-			  	$_SESSION['login_user'] = $email;
-			  	$_SESSION['success'] = "You are now logged in";
-			  	header('location: ../Sponsor-Profile/Sponsor-Profile.php');
+			 }else {
 
-       }
-    }
+					//Registration
+
+					$query = "INSERT INTO sponsor (Email, Username, Full_Name, Mobile_No, Password)
+								VALUES('$email','$myusername','$fullname', '$mobileno', '$mypassword')";
+
+					mysqli_query($db, $query);
+					$_SESSION['login_user'] = $email;
+					$_SESSION['success'] = "You are now logged in";
+					header('location: ../Sponsor-Profile/Sponsor-Profile.php');
+
+			 }
+		}
 
 ?>
-
 
 
 
@@ -96,12 +104,24 @@
 			<div class="login100-more" style="background-image: url('images/donation-charity.jpg');"></div>
 
 			<div class="wrap-login100 p-l-50 p-r-50 p-t-72 p-b-50">
+
+
 				<form class="login100-form validate-form" action="" method="POST" >
 				<!--	<span class="login100-form-title p-b-59">
 						Sign Up
 					</span> -->
-					<h2><b>Sign Up</b></h2> <br> <br>
-						<p><cite>"We make a living by what we get, We make a life by what we give"</cite> <br><br> </p>
+
+					<?php if($error!=NULL): ?>
+						<div class="alert alert-danger">
+							Email is already taken
+						</div>
+					<?php endif; ?>
+
+					<div>
+					<h2><b>Sign Up</b></h2> <br><br>
+						<p><cite>"We make a living by what we get, We make a life by what we give"</cite> <br><br> <br></p>
+					</div>
+
 
 					<div class="wrap-input100 validate-input" data-validate="Name is required">
 						<span class="label-input100">Full Name</span>
@@ -151,7 +171,9 @@
 									Sign Up
 							</button>
 
-							<!--<button class="login100-form-btn" formaction="../Sponsor-Profile/Sponsor-Profile.php">
+
+
+			<!--<button class="login100-form-btn" formaction="../Sponsor-Profile/Sponsor-Profile.php">
 									Sign Up
 							</button>-->
 
@@ -183,6 +205,11 @@
 	<script src="vendor/countdowntime/countdowntime.js"></script>
 <!--===============================================================================================-->
 	<script src="js/main.js"></script>
+
+
+
+
+
 
 </body>
 </html>

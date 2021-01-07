@@ -1,5 +1,7 @@
 <?php
 
+		$error = NULL;
+
 		$db = new mysqli("localhost","root","","edu_right");
 
 		// Check connection
@@ -19,7 +21,6 @@
       $sql = "SELECT Email FROM sponsor WHERE Email = '$myusername' and Password = '$mypassword'";
       $result = mysqli_query($db,$sql);
       $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
-      $active = $row['active'];
 
       $count = mysqli_num_rows($result);
 
@@ -34,10 +35,13 @@
 
       }else {
 
-         echo 'Your Login Name or Password is invalid';
+         $error = "Your Login Name or Password is invalid";
       }
    }
 ?>
+
+
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -75,6 +79,12 @@
 			<div class="wrap-login100">
 				<form class="login100-form validate-form" action="" method="POST">
 
+					<?php if($error!=NULL): ?>
+						<div class="alert alert-danger">
+							<center>Your Login Name or Password is invalid</center>
+						</div>
+						<br>
+					<?php endif; ?>
 
 					<span class="login100-form-title p-b-43">
 						Login to continue
@@ -95,15 +105,10 @@
 					</div>
 
 					<div class="flex-sb-m w-full p-t-3 p-b-32">
-						<div class="contact100-form-checkbox">
-							<input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me">
-							<label class="label-checkbox100" for="ckb1">
-								Remember me
-							</label>
-						</div>
 
-						<div>
-							<a href="#" class="txt1">
+
+						<div name="forgot">
+							<a href="#" class="txt1" >
 								Forgot Password?
 							</a>
 						</div>

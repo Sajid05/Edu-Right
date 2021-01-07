@@ -1,5 +1,7 @@
 <?php
 
+		$error = NULL;
+
 		$db = new mysqli("localhost","root","","edu_right");
 
 		if ($db -> connect_errno) {
@@ -37,7 +39,7 @@
          // $_SESSION['login_user'] = $email;
 
           //header("location: ../Sponsor-Profile/Sponsor-Profile.php");
- 					echo "Email is taken";
+ 					$error = "Email is already taken.";
 
        }else {
 
@@ -49,12 +51,12 @@
 			  	mysqli_query($db, $query);
 			  	$_SESSION['login_user'] = $email;
 			  	$_SESSION['success'] = "You are now logged in";
-			  	
+
 
 			  	header("location:../Student-Post-Sign-up-Message/Student-Post-Sign-up-Message.php");
 
-			
-			  	
+
+
 
        }
     }
@@ -113,8 +115,17 @@
 				<!--	<span class="login100-form-title p-b-59">
 						Sign Up
 					</span> -->
-					<h2><b>Sign Up</b></h2> <br> <br>
+
+					<?php if($error!=NULL): ?>
+						<div class="alert alert-danger">
+							Email is already taken
+						</div>
+					<?php endif; ?>
+
+					<div>
+					<h2><b>Sign Up</b></h2> <br>
 						<p><cite>"Education is the passport to the future, for tomorrow belongs to those who prepare for it today"</cite> <br><br> </p>
+					</div>
 
 					<div class="wrap-input100 validate-input" data-validate="Name is required">
 						<span class="label-input100">Full Name</span>

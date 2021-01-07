@@ -90,7 +90,7 @@
                     <div class="left-text col-lg-6 col-md-6 col-sm-12 col-xs-12" data-scroll-reveal="enter left move 30px over 0.6s after 0.4s">
                         <h3 style="color:white; font-size: 30px;"> <b> START<br>ONLINE<br>SCHOLARSHIPS </b></h3>
                         <br>
-                        <a href="#about" class="main-button-slider">Know About Us</a>
+                        <a href="#about2" class="main-button-slider">Prevent Dropouts</a>
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" data-scroll-reveal="enter right move 30px over 0.6s after 0.4s">
                     </div>
@@ -115,7 +115,7 @@
                     </div>
                     <div class="left-text">
                         <p>Edu-Right is a platform bridging humanitarians with underprevileged students to prevent them from dropping out and continue their study.</p>
-                        <a href="#frequently-question" class="main-button">Current Situation</a>
+                        <a href="#frequently-question" class="main-button">Current Situations</a>
                     </div>
                 </div>
             </div>
