@@ -39,7 +39,7 @@
 					</span>
 
 					<center>
-						Thanks for signing up. We have sent you an email for verification. Please verify within 1 hour. <br> <br>
+						Thanks for signing up. We have sent you an email for verification. The link will be valid up until 11:59:59 PM <br> <br>
 					</center>
 
 

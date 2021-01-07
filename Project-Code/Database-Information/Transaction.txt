@@ -1,6 +1,6 @@
 ================transaction============
 
-Student_Email 	VARCHAR 
+Student_Email 	VARCHAR PK
 Sponsor_Email 	VARCHAR 
 Trx_Date        TIMESTAMP
 

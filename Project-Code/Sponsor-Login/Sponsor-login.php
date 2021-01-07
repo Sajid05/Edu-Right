@@ -108,7 +108,7 @@
 
 
 						<div name="forgot">
-							<a href="#" class="txt1" >
+							<a href="../Sponsor-Forgot-Password/Sponsor-Forgot-Password.php" class="txt1" >
 								Forgot Password?
 							</a>
 						</div>

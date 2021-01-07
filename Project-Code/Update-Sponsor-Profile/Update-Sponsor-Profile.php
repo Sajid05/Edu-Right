@@ -21,6 +21,7 @@
     $myusername = $row["Username"];
     $mobileno = $row["Mobile_No"];
     $dob = $row["DOB"];
+    $pass = $row["Password"];
     $address = $row["Address"];
     $education = $row["Education"];
     $profession = $row["Profession"];
@@ -34,6 +35,7 @@
  		 	 $fullname = mysqli_real_escape_string($db,$_POST['name']);
 			 $mobileno = mysqli_real_escape_string($db,$_POST['mobileno']);
        $dob = mysqli_real_escape_string($db,$_POST['dob']);
+       $pass = mysqli_real_escape_string($db,$_POST['pass']);
        $address = mysqli_real_escape_string($db,$_POST['address']);
        $education = mysqli_real_escape_string($db,$_POST['education']);
        $profession = mysqli_real_escape_string($db,$_POST['profession']);
@@ -41,7 +43,7 @@
 
 
  		 	 //Update
-			 $query = "UPDATE sponsor SET Full_Name='$fullname', Mobile_No='$mobileno', DOB='$dob', Address='$address', Education='$education', Profession='$profession', Hobby='$hobby' WHERE Email='$email'";
+			 $query = "UPDATE sponsor SET Full_Name='$fullname', Mobile_No='$mobileno', DOB='$dob', Password = '$pass', Address='$address', Education='$education', Profession='$profession', Hobby='$hobby' WHERE Email='$email'";
 			 mysqli_query($db, $query);
 
 
@@ -772,6 +774,15 @@ input[type="submit"]:hover{
                                     <input type="date" class="form-control" name="dob" value="<?php echo $dob;?>" style="height:40px;">
                                 </div>
                             </div>
+
+                            <div class="form-group">
+                                <label class="col-md-2 col-sm-3 col-xs-12 control-label">Password</label>
+                                <div class="col-md-10 col-sm-9 col-xs-12">
+                                    <input type="text" class="form-control" name="pass" value="<?php echo $pass;?>" style="height:40px;">
+                                </div>
+                            </div>
+
+
                             <div class="form-group">
                                 <label class="col-md-2 col-sm-3 col-xs-12 control-label">Address</label>
                                 <div class="col-md-10 col-sm-9 col-xs-12">
