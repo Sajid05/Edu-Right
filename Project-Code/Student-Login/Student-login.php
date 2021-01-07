@@ -105,7 +105,7 @@
 
 
 						<div>
-							<a href="#" class="txt1">
+							<a href="../Student-Forgot-Password/Student-Forgot-Password.php" class="txt1">
 								Forgot Password?
 							</a>
 						</div>

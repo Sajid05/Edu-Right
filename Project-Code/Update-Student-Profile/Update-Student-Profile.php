@@ -20,6 +20,7 @@
     $fullname = $row['Full_Name'];
     $myusername = $row["Username"];
     $mobileno = $row["Mobile_No"];
+		$pass = $row["Password"];
     $dob = $row["DOB"];
     $address = $row["Address"];
     $school = $row["School"];
@@ -34,6 +35,7 @@
 
  		 	 $fullname = mysqli_real_escape_string($db,$_POST['name']);
 			 $mobileno = mysqli_real_escape_string($db,$_POST['mobileno']);
+			 $pass = mysqli_real_escape_string($db,$_POST['pass']);
        $dob = mysqli_real_escape_string($db,$_POST['dob']);
        $address = mysqli_real_escape_string($db,$_POST['address']);
        $school = mysqli_real_escape_string($db,$_POST['school']);
@@ -42,7 +44,7 @@
 
 
  		 	 //Update
-			 $query = "UPDATE student SET Full_Name='$fullname', Mobile_No='$mobileno', DOB='$dob', Address='$address', School='$school', Standard='$standard', Hobby='$hobby' WHERE Email='$email'";
+			 $query = "UPDATE student SET Full_Name='$fullname', Mobile_No='$mobileno', DOB='$dob', Password = '$pass', Address='$address', School='$school', Standard='$standard', Hobby='$hobby' WHERE Email='$email'";
 			 mysqli_query($db, $query);
 
 
@@ -780,7 +782,17 @@ input[type="submit"]:hover{
                                     <input type="date" class="form-control" name="dob" value="<?php echo $dob;?>" style="height:40px;">
                                 </div>
                             </div>
-                            <div class="form-group">
+
+
+														<div class="form-group">
+                                <label class="col-md-2 col-sm-3 col-xs-12 control-label">Password</label>
+                                <div class="col-md-10 col-sm-9 col-xs-12">
+                                    <input type="password" class="form-control" name="pass" value="<?php echo $pass;?>" style="height:40px;">
+                                </div>
+                            </div>
+
+
+														<div class="form-group">
                                 <label class="col-md-2 col-sm-3 col-xs-12 control-label">Address</label>
                                 <div class="col-md-10 col-sm-9 col-xs-12">
                                     <input type="text" class="form-control" name="address" value="<?php echo $address;?>" style="height:40px;">

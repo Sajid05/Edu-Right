@@ -1,28 +1,64 @@
 <?php
 
-	$db = new mysqli("localhost","root","","edu_right");
+		$error = NULL;
+		$db = new mysqli("localhost","root","","edu_right");
 
-	if ($db -> connect_errno) {
-		echo "Failed to connect to MySQL: " . $db -> connect_error;
-		exit();
-	}
-	session_start();
+		if ($db -> connect_errno) {
+			echo "Failed to connect to MySQL: " . $db -> connect_error;
+			exit();
+		}
+		session_start();
 
-	$email = $_GET['email'];
-
-	$query = "UPDATE pre_student SET Vkey='0' WHERE Email='$email'";
-
-	mysqli_query($db, $query);
+		if($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
+			 $email = mysqli_real_escape_string($db,$_POST['email']);
 
- ?>
+
+			 $sql = "SELECT Email FROM student WHERE Email = '$email'";
+			 $result = mysqli_query($db,$sql);
+			 $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
+
+			 $count = mysqli_num_rows($result);
+
+			 if($count == 1) {
+
+			 	//Registration
+
+
+			 		$to = $email;
+ 				 	$subject = "Forgot Password";
+ 				 	$messege = "<a href='http://www.edu-right.com/edu-right/project-code/Student-Forgot-Password/Student-Forgot-Password-Intermediate.php?email=$email'>Update your password</a>";
+ 				 	$headers = "From: iut.project.sad@gmail.com \r\n";
+ 				 	$headers .= "MIME-Version: 1.0" . "\r\n";
+ 				 	$headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+
+ 				 	mail($to,$subject,$messege,$headers);
+
+					//$_SESSION['login_user'] = $email;
+
+        			header("location: ../Home-Page.php");
+
+
+
+
+			 }else {
+
+					$error = "Invalid Email";
+			 }
+		}
+
+?>
+
+
+
+
 
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Verification Completed</title>
+	<title>Forgot Password</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->
@@ -55,22 +91,36 @@
 			<div class="wrap-login100">
 				<form class="login100-form validate-form" action="" method="POST">
 
-					<span class="login100-form-title p-b-34 p-t-27">
-							Verification Completed
-					</span>
+					<?php if($error!=NULL): ?>
+						<div class="alert alert-danger">
+							<center>Your email is invalid</center>
+						</div>
+						<br>
+					<?php endif; ?>
 
-					<center>
-						Thanks for the verification. Your status will be updated with 7 days. <br> <br>
-					</center>
+
+					<span class="login100-form-title p-b-34 p-t-27">
+							Forgot Password?
+					</span><br>
+
+					<div class="wrap-input100 validate-input" data-validate="Email is required">
+						<span class="label-input100"></span>
+						<input class="input100" type="text" name="email" placeholder="Provide your email here">
+						<span class="focus-input100"></span>
+					</div>
 
 
 
 					<div class="container-login100-form-btn">
-						<button class="login100-form-btn">
-							<a href = "../Home-Page.php"> Go to Home Page</a>
-						</button>
-					</div>
+						<div class="wrap-login100-form-btn">
+							<div class="login100-form-bgbtn"></div>
 
+							<button class="login100-form-btn">
+									Send Recovery Options
+							</button>
+
+						</div>
+					</div>
 
 				</form>
 			</div>

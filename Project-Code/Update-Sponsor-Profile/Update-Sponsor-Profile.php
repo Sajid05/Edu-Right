@@ -778,7 +778,7 @@ input[type="submit"]:hover{
                             <div class="form-group">
                                 <label class="col-md-2 col-sm-3 col-xs-12 control-label">Password</label>
                                 <div class="col-md-10 col-sm-9 col-xs-12">
-                                    <input type="text" class="form-control" name="pass" value="<?php echo $pass;?>" style="height:40px;">
+                                    <input type="password" class="form-control" name="pass" value="<?php echo $pass;?>" style="height:40px;">
                                 </div>
                             </div>
 
