@@ -191,7 +191,7 @@
 
 
                     if(!empty($student_profilepic)){
-                     echo '<img src="data:image/jpeg;base64,'.$stuent_profilepic .'" alt="Admin" class="rounded-circle" height="150" width="150"/>';
+                     echo '<img src="data:image/jpeg;base64,'.$student_profilepic .'" alt="Admin" class="rounded-circle" height="150" width="150"/>';
                     }
 
                     else
@@ -208,8 +208,8 @@
                          echo '<h4>'.$student_username.'</h4> <br><br>';
 
                       ?>
-                      <p class="text-secondary mb-1"><text style="color:black;">Student of Class 5</text></p>
-                      <p class="text-muted font-size-sm"><text style="color:black;">Feni Sadar</text></p><br><br><br><br><br>
+                      <p class="text-secondary mb-1"><text style="color:black;"></text></p>
+                      <p class="text-muted font-size-sm"><text style="color:black;"></text></p><br><br><br><br><br>
                     </div>
                     <form method="post">
                       <div class="container-login100-form-btn">
@@ -322,7 +322,7 @@
 
 
                         if(!empty($student_result)){
-                         echo '<img src="data:image/jpeg;base64,'.$student_result .'" alt="Admin" class="rounded-circle" height="150" width="150"/>';
+                         echo '<img src="data:image/jpeg;base64,'.$student_result .'" alt="Admin" height="700" width="450"/>';
                         }
 
                         else

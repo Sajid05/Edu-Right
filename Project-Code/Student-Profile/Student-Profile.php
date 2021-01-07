@@ -170,9 +170,9 @@
                          echo '<h4>'.$myusername.'</h4> <br><br>';
 
                       ?>
-                      <p class="text-secondary mb-1"><text style="color:black;">Student of Class 5</text></p>
-                      <p class="text-muted font-size-sm"><text style="color:black;">Feni Sadar</text></p><br><br>
-                      <a href="../Update-Student-Profile/Update-Student-Profile.php"<button class="btn btn-primary">Update Profile</button></a> <br> <br>
+                      <p class="text-secondary mb-1"><text style="color:black;"></text></p>
+                      <p class="text-muted font-size-sm"><text style="color:black;"></text></p><br><br>
+                      <a href="../Update-Student-Profile/Update-Student-Profile.php"><button class="btn btn-primary">Update Profile</button></a> <br> <br>
                       <a href= "../View-Sponsor-Profile/View-Sponsor-Profile.php"><button class="btn btn-primary">View Sponsor's Profile</button></a> <br> <br>
 										<form method="POST">
                       <a href="../Home-Page.php"><button class="btn btn-outline-primary" name="logout">Log out</button></a> <br> <br>
@@ -277,7 +277,7 @@
 
 
                         if(!empty($result)){
-                        echo '<img src="data:image/jpeg;base64,'.$result.'" alt="Admin" height="300" width="450"/>';
+                        echo '<img src="data:image/jpeg;base64,'.$result.'" alt="Admin" height="700" width="450"/>';
                       }
 
                         else
