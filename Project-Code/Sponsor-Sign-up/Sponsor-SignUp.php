@@ -14,10 +14,12 @@
 			 // username and password sent from form
 
 			 $fullname = mysqli_real_escape_string($db,$_POST['name']);
-					$myusername = mysqli_real_escape_string($db,$_POST['username']);
+			 $myusername = mysqli_real_escape_string($db,$_POST['username']);
 			 $email = mysqli_real_escape_string($db,$_POST['email']);
 			 $mobileno = mysqli_real_escape_string($db,$_POST['MobileNo']);
 			 $mypassword = mysqli_real_escape_string($db,$_POST['pass']);
+			 $vkey = md5(time().$myusername);
+
 
 			 $sql = "SELECT Email FROM sponsor WHERE Email = '$email'";
 			 $result = mysqli_query($db,$sql);
@@ -29,16 +31,6 @@
 			 // If result matched $myusername and $mypassword, table row must be 1 row
 
 			 if($count == 1) {
-					// session_register("myusername");
-				//  $_SESSION['login_user'] = $email;
-
-				$to = $email;
-				$subject = "Email Verification";
-				$messege = "BBBBBBBBBBBBBBBBBBBB";
-				$headers = "From: iut.project.sad@gmail.com";
-
-				mail($to,$subject,$messege,$headers);
-
 
 				$error = "Email is already taken.";
 
@@ -46,13 +38,25 @@
 
 					//Registration
 
-					$query = "INSERT INTO sponsor (Email, Username, Full_Name, Mobile_No, Password)
-								VALUES('$email','$myusername','$fullname', '$mobileno', '$mypassword')";
+					$query = "INSERT INTO sponsor (Email, Username, Full_Name, Mobile_No, Password, Vkey)
+								VALUES('$email','$myusername','$fullname', '$mobileno', '$mypassword', '$vkey')";
 
 					mysqli_query($db, $query);
 					$_SESSION['login_user'] = $email;
 					$_SESSION['success'] = "You are now logged in";
-					header('location: ../Sponsor-Profile/Sponsor-Profile.php');
+
+
+					$to = $email;
+ 				 	$subject = "Email Verification";
+ 				 	$messege = "<a href='http://www.edu-right.com/edu-right/project-code/Sponsor-Email-Verification/Sponsor-Email-Verification.php?email=$email'>Verify email</a>";
+ 				 	$headers = "From: iut.project.sad@gmail.com \r\n";
+ 				 	$headers .= "MIME-Version: 1.0" . "\r\n";
+ 				 	$headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+
+ 				 	mail($to,$subject,$messege,$headers);
+
+
+					header('location: ../Sponsor-Post-Sign-up-Message/Sponsor-Post-Sign-up-Message.php');
 
 			 }
 		}

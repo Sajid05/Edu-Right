@@ -15,9 +15,18 @@
 
     $current_row = $_SESSION["Current_row"];
 
-    $sql = "SELECT * FROM pre_student LIMIT $current_row,1";
-    $result = mysqli_query($db,$sql);
-    $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
+		while(1){
+			$sql = "SELECT * FROM pre_student LIMIT $current_row,1";
+	    $result = mysqli_query($db,$sql);
+	    $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
+
+			if($row['Vkey']=='0')break;
+			if($current_row == $_SESSION['Total']-1)
+				header("location: ./admin.php");
+
+			$current_row = $current_row+1;
+		}
+
 
     $fullname = $row['Full_Name'];
     $myusername = $row["Username"];

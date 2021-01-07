@@ -18,7 +18,7 @@
       $myusername = mysqli_real_escape_string($db,$_POST['email']);
       $mypassword = mysqli_real_escape_string($db,$_POST['pass']);
 
-      $sql = "SELECT Email FROM sponsor WHERE Email = '$myusername' and Password = '$mypassword'";
+      $sql = "SELECT Email FROM sponsor WHERE Email = '$myusername' and Password = '$mypassword' and Vkey= '0'";
       $result = mysqli_query($db,$sql);
       $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
 

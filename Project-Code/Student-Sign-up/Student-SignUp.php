@@ -14,11 +14,12 @@
        // username and password sent from form
 
  		 	 $fullname = mysqli_real_escape_string($db,$_POST['name']);
-       		 $myusername = mysqli_real_escape_string($db,$_POST['username']);
+       $myusername = mysqli_real_escape_string($db,$_POST['username']);
 			 $email = mysqli_real_escape_string($db,$_POST['email']);
 			 $mobileno = mysqli_real_escape_string($db,$_POST['MobileNo']);
-      		 $mypassword = mysqli_real_escape_string($db,$_POST['pass']);
-      		 $eligibility = mysqli_real_escape_string($db,$_POST['eligibility']);
+       $mypassword = mysqli_real_escape_string($db,$_POST['pass']);
+       $eligibility = mysqli_real_escape_string($db,$_POST['eligibility']);
+			 $vkey = md5(time().$myusername);
 
        $sql = "SELECT Email FROM student WHERE Email = '$email'";
        $sql2 = "SELECT Email FROM pre_student WHERE Email = '$email'";
@@ -35,23 +36,29 @@
        // If result matched $myusername and $mypassword, table row must be 1 row
 
        if($count == 1 || $count2 == 1) {
-          // session_register("myusername");
-         // $_SESSION['login_user'] = $email;
 
-          //header("location: ../Sponsor-Profile/Sponsor-Profile.php");
  					$error = "Email is already taken.";
 
        }else {
 
  			 		//Registration
 
-			  	$query = "INSERT INTO pre_student (Email, Username, Full_Name, Mobile_No, Password, Eligibility)
-			  			  VALUES('$email','$myusername','$fullname', '$mobileno', '$mypassword', '$eligibility')";
+			  	$query = "INSERT INTO pre_student (Email, Username, Full_Name, Mobile_No, Password, Eligibility, Vkey)
+			  			  VALUES('$email','$myusername','$fullname', '$mobileno', '$mypassword', '$eligibility', '$vkey')";
 
 			  	mysqli_query($db, $query);
 			  	$_SESSION['login_user'] = $email;
 			  	$_SESSION['success'] = "You are now logged in";
 
+
+					$to = $email;
+ 				 $subject = "Email Verification";
+ 				 $messege = "<a href='http://www.edu-right.com/edu-right/project-code/Student-Email-Verification/Student-Email-Verification.php?email=$email'>Verify email</a>";
+ 				 $headers = "From: iut.project.sad@gmail.com \r\n";
+ 				 $headers .= "MIME-Version: 1.0" . "\r\n";
+ 				 $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+
+ 				 mail($to,$subject,$messege,$headers);
 
 			  	header("location:../Student-Post-Sign-up-Message/Student-Post-Sign-up-Message.php");
 
