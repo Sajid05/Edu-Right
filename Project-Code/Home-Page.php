@@ -256,6 +256,7 @@ YOUR HELP IS NEEDED FOR MANY<br><br>STUDENTS TO CONTINUE THEIR STUDY</p>
     <footer>
         <div class="container">
              <a href="#welcome" class="logo" style="font-size: 30px;">Edu Right</a>
+             <a href="./admin/admin.php" style="float: right; font-size: 27px;"> Admin login </a>
              <p style="font-size: 15px;"> Making a Better Bangladesh </p>
         </div>
     </footer>

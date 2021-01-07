@@ -1,5 +1,7 @@
 <?php
 
+
+
 		$db = new mysqli("localhost","root","","edu_right");
 
 		// Check connection
@@ -26,7 +28,8 @@
 
       if($count == 1) {
          // session_register("myusername");
-         /*$_SESSION['login_user'] = $myusername;*/
+				 
+         $_SESSION['login_user'] = $myusername;
 				 $_SESSION['Current_row'] = 0;
 
 				 $sql = "SELECT COUNT(*) FROM pre_student";

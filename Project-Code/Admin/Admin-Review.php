@@ -8,6 +8,9 @@
 		}
   	session_start();
 
+		if(!isset($_SESSION['login_user']))
+			header("Location: ../Home-Page.php");
+
 		if($_SESSION['Total']==0) {
 			header("location: ./admin.php");
 		}
@@ -34,6 +37,12 @@
     $mobileno = $row["Mobile_No"];
     $mypassword = $row["Password"];
     $application = $row["Eligibility"];
+
+
+		if(isset($_POST['logout'])) {
+			unset($_SESSION['login_user']);
+			header("location: ../home-page.php");
+		}
 
 
     if(isset($_POST['previous'])) {
@@ -286,7 +295,8 @@
 
 
           <nav aria-label="breadcrumb" class="main-breadcrumb">
-          <b> <h3>Review Students </h3></b> <hr class = "test">
+          <h3> Review Students </h3>
+					<hr class = "test">
           </nav>
 
 
@@ -364,8 +374,17 @@
                           </button>
 
                       </div>
+
+											<div>
+												<button class="login100-form-btn" style="float: left; width: 100px; height: 50px; margin-bottom: 15px; margin-left:  500px; border-radius: 22px;" name="logout">
+												 Logout
+												</button>
+											</div>
+
                     </form>
               </div>
+
+
 
 
         </div>
