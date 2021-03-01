@@ -1,6 +1,6 @@
 # Edu-Right
 
-Edu-Right is a scholarship management website that facilitates the humanitarian people to help the underprivileged students with their study. This project was done for CSE 4408 - System Analysis and Design Lab following System Development Life Cycle (SDLC).
+Edu-Right is a scholarship management website that facilitates the humanitarian people to help the underprivileged students with their study. This project was done for CSE 4408 - System Analysis and Design Lab following the System Development Life Cycle (SDLC).
 
 ![Status](https://img.shields.io/badge/Status-Complete-brightgreen)
 ![IDE](https://img.shields.io/badge/Code%20Editor-Sublime%20Text-blue)
@@ -13,7 +13,7 @@ Edu-Right is a scholarship management website that facilitates the humanitarian 
 * Adham Arik Rahman- 180041219
 
 ## Overview
-The system has broadly two users: Sponsors & Students. Besides, there is an admin access to review the applications from students. Students can sign up in the platform if he intends to receive scholarship. An admin will review this request, if accepted the student will recieve monthly scholarship upon the availability of the sponsors. The sponsors will be able to track the progress of their sponsored student.  
+The system has broadly two users: Sponsors & Students. Besides, there is an admin access to review the applications from students. Students can sign up in the platform if he intends to receive scholarship. An admin will review this request, if accepted the student will recieve monthly scholarship upon the availability of the sponsors. The sponsors will be able to track the progress of their sponsored students.  
 
 ## Features
 ### For both Sponsors & Students:
