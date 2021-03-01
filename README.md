@@ -49,3 +49,16 @@ The system has broadly two users: Sponsors & Students. Besides, there is an admi
 #### Footer:
 ![Home Page (6)](https://user-images.githubusercontent.com/57594776/109493719-197a9580-7ab7-11eb-8084-cda9a440b308.jpg)
 
+### Student
+#### Sign Up:
+![Sign Up](https://user-images.githubusercontent.com/57594776/109494226-cead4d80-7ab7-11eb-9edf-000979063d4e.jpg)
+#### Sign in:
+![Sign in](https://user-images.githubusercontent.com/57594776/109494263-d967e280-7ab7-11eb-86e3-28c20f13d2a1.jpg)
+#### View Profile:
+![View Profile](https://user-images.githubusercontent.com/57594776/109494250-d53bc500-7ab7-11eb-8f0c-f92161e0bcf3.jpg)
+#### Update Profile:
+![Update Profile](https://user-images.githubusercontent.com/57594776/109494238-d2d96b00-7ab7-11eb-9327-3479a21421b9.jpg)
+#### View Sponsor:
+![View Sponsor](https://user-images.githubusercontent.com/57594776/109494259-d7058880-7ab7-11eb-9ac4-cbbf6903b6b5.jpg)
+
+
