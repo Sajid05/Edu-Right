@@ -13,16 +13,25 @@ Edu-Right is a scholarship management website that facilitates the humanitarian 
 * Adham Arik Rahman- 180041219
 
 ## Overview
-The system has broadly two users: Sponsors & Students. Besides, there is an admin access to review the applications from students. Students will join the platform if he intends to receive scholarship. An admin will review this request, if accepted the student will recieve monthly scholarship upon the availability of the sponsors. The sponsors will be able to track the progress of their sponsored student.  
+The system has broadly two users: Sponsors & Students. Besides, there is an admin access to review the applications from students. Students can sign up in the platform if he intends to receive scholarship. An admin will review this request, if accepted the student will recieve monthly scholarship upon the availability of the sponsors. The sponsors will be able to track the progress of their sponsored student.  
 
 ## Features
 ### For both Sponsors & Students:
-* Sign up & Sign in options
+* Sign up, Sign in & Sign out options
 * View profile options 
 * Update profile options
 * Email Verification functionality 
 * Forgot Password functionality 
 
+### For Sponsors:
+* Send Money option
+* Option for viewing sponsored students’ profile and track progress
+
+### For Students:
+* Option for viewing sponsor's profile
+
+### For Admin:
+* Option for reviewing applications of students
 
 
 
