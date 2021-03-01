@@ -5,7 +5,7 @@ Edu-Right is a scholarship management website that facilitates the humanitarian 
 This project was done for CSE 4408 - System Analysis and Design Lab following the System Development Life Cycle (SDLC).
 
 ![Status](https://img.shields.io/badge/Status-Complete-brightgreen)
-![IDE](https://img.shields.io/badge/Code%20Editor-Sublime%20Text-blue)
+![Database](https://img.shields.io/badge/Code%20Editor-phpMyAdmin%20Text-blue)
 ![License](https://img.shields.io/badge/license-MIT-orange.svg)
 
 
