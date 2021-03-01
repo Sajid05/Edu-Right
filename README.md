@@ -72,6 +72,10 @@ The system has broadly two users: Sponsors & Students. Besides, there is an admi
 ![Update Profile](https://user-images.githubusercontent.com/57594776/109494667-63b04680-7ab8-11eb-9b17-847e4ecd9334.jpg)
 #### View Sponsored Student:
 ![View Sponsored Student](https://user-images.githubusercontent.com/57594776/109494676-6612a080-7ab8-11eb-9bbb-435a708d3fd7.jpg)
+#### Send Money:
+This demo paymaent gateway was implemented by integrating the APIs of SSLCOMMERZ.
+![demooo](https://user-images.githubusercontent.com/57594776/109497058-b3dcd800-7abb-11eb-8843-02d5a59673b7.png)
+
 
 ### Admin
 #### Sign in:
