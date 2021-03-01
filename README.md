@@ -34,5 +34,7 @@ The system has broadly two users: Sponsors & Students. Besides, there is an admi
 * Option for reviewing applications of students
 
 
+## Snippets
+### Home Page:
 
 
