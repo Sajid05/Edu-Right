@@ -1,0 +1,31 @@
+==============student================
+
+
+Email VARCHAR PK NOT NULL
+
+Username VARCHAR NOT NULL
+
+Full_Name VARCHAR NOT NULL
+
+Mobile_No NUMBER NOT NULL
+
+Password VARCHAR NOT NULL
+
+DOB DATE
+
+Address VARCHAR
+
+School VARCHAR
+
+Standard VARCHAR
+
+Hobby VARCHAR
+
+Profile_Picture MBLOB
+
+Result MBLOB
+
+
+
+
+

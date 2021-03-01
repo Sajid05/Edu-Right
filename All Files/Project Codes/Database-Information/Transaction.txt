@@ -1,0 +1,28 @@
+================transaction============
+
+Student_Email 	VARCHAR PK
+Sponsor_Email 	VARCHAR 
+Trx_Date        TIMESTAMP
+
+
+EVENT:
+
+1.
+delete_from_transaction
+Execute every: 30 DAY
+Event type: Recurring
+Start: 2020-12-30 20:20:18
+
+Definition: DELETE FROM transaction
+	    WHERE `Trx_Date` <= CURRENT_TIMESTAMP - INTERVAL 30 DAY
+
+2.
+insert_into_request
+Execute every: 30 DAY
+Event type: Recurring
+Start: 2020-12-30 20:20:17
+
+Definition: INSERT INTO request (Email)
+	    SELECT Student_Email
+	    FROM transaction
+	    WHERE `Trx_Date` <= CURRENT_TIMESTAMP - INTERVAL 30 DAY

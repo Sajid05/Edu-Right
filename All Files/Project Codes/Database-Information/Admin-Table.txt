@@ -1,0 +1,4 @@
+============admin=========
+
+Username VARCHAR PK: admin
+Password VARCHAR: admin

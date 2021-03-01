@@ -1,0 +1,15 @@
+================pre_student==========
+
+Email VARCHAR PK NOT NULL
+
+Username VARCHAR NOT NULL
+
+Full_Name VARCHAR NOT NULL
+
+Mobile_No NUMBER NOT NULL
+
+Password VARCHAR NOT NULL
+
+Eligibility VARCHAR NOT NULL
+
+Vkey	VARCHAR NOT NULL
