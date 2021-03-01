@@ -38,4 +38,14 @@ The system has broadly two users: Sponsors & Students. Besides, there is an admi
 ### Home Page
 #### Intro:
 ![Home Page (1)](https://user-images.githubusercontent.com/57594776/109493440-b38e0e00-7ab6-11eb-870c-e7443bb5beb2.jpg)
+#### About Us:
+![Home Page (2)](https://user-images.githubusercontent.com/57594776/109493659-049e0200-7ab7-11eb-8b02-8a136f59a080.jpg)
+#### Sponsorship:
+![Home Page (3)](https://user-images.githubusercontent.com/57594776/109493722-1a132c00-7ab7-11eb-9b33-dd20e66c2127.jpg)
+#### Scholarship:
+![Home Page (4)](https://user-images.githubusercontent.com/57594776/109493704-15e70e80-7ab7-11eb-97fa-af50acd825aa.jpg)
+#### Current Scenario:
+![Home Page (5)](https://user-images.githubusercontent.com/57594776/109493715-18e1ff00-7ab7-11eb-8b02-58d7eb096d15.jpg)
+#### Footer:
+![Home Page (6)](https://user-images.githubusercontent.com/57594776/109493719-197a9580-7ab7-11eb-8084-cda9a440b308.jpg)
 
