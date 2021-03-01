@@ -35,6 +35,7 @@ The system has broadly two users: Sponsors & Students. Besides, there is an admi
 
 
 ## Snippets
-### Home Page:
+### Home Page
+#### Intro:
 ![Home Page (1)](https://user-images.githubusercontent.com/57594776/109493440-b38e0e00-7ab6-11eb-870c-e7443bb5beb2.jpg)
 
